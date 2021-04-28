@@ -1,7 +1,7 @@
 <template>
 <Page class="page" actionBarHidden="true">
-  
         <StackLayout orientation="vertical" class="all">
+  <!-- <ScrollView> -->
 
         <AbsoluteLayout class="btn-back" @tap="$navigateBack">
                                     <Label  class="back"
@@ -16,14 +16,14 @@
                                     <!-- <Button class="fas" text.decode="&#xf060;"  ></Button> -->
                     </AbsoluteLayout>
                     
-                   <AbsoluteLayout class="container"  > 
+                   <!-- <AbsoluteLayout class="container"  > 
                     <Label class="circle" left="130%" top="0%" > </Label>
                      <Label class="circle1" top="25%" left="85%" > </Label> 
                      <Label class="circle2" top="30%" left="207%" > </Label> 
                     <Label class="base" top="119%" left="150%"> </Label>
                     
 
-                   </AbsoluteLayout>
+                   </AbsoluteLayout> -->
                    <!-- <AbsoluteLayout class="container1" > 
                    </AbsoluteLayout> --> 
 
@@ -31,9 +31,51 @@
                     <Label class="circle"> </Label>
                     <Label class="base"> </Label> -->
                      
+                      <!-- <AbsoluteLayout class="container"  > 
+                    <Label class="circle" left="130%" top="0%" > </Label>
+                     <Label class="circle1" top="25%" left="85%" > </Label> 
+                     <Label class="circle2" top="30%" left="207%" > </Label> 
+                    <Label class="base" top="119%" left="150%"> </Label>
+                    
+
+                   </AbsoluteLayout> -->
+
+         <GridLayout >
+            <StackLayout>
+              <Image class="StipkamaOkvir" src="~/images/insTipkama.png" ></Image>
+            </StackLayout>
+        </GridLayout >
+          <GridLayout class="trzalackiOkvir" >
+            <StackLayout>
+              <Image  src="~/images/trzalacki.png" ></Image>
+            </StackLayout>
+        </GridLayout>
+
+        <GridLayout class="gudackiOkvir">
+            <StackLayout>
+              <Image src="~/images/gudacki.png" ></Image>
+            </StackLayout>
+        </GridLayout>
+         <GridLayout class="puhackiOkvir">
+            <StackLayout>
+              <Image src="~/images/puhacki.png" ></Image>
+            </StackLayout>
+        </GridLayout>
+         <GridLayout class="udaraljkeOkvir">
+            <StackLayout>
+              <Image src="~/images/udaraljke.png" ></Image>
+            </StackLayout>
+        </GridLayout>
+         <GridLayout class="orkestarOkvir">
+            <StackLayout>
+              <Image src="~/images/orkestar.png" ></Image>
+            </StackLayout>
+        </GridLayout>
+
 
                    
             
+        <!-- </ScrollView> -->
         </StackLayout>
 </Page>
 
@@ -51,6 +93,52 @@
     /* .page{
         background-color:#ccc ;
     } */
+    Image{
+        width: 600px;  
+        height: 600px;
+    }
+    .StipkamaOkvir{
+        /* width: 600px;  
+        height: 600px; */
+        /* margin-bottom: 60%; */
+        margin-left: 40%;
+        margin-bottom:-1700px;
+    }
+    .trzalackiOkvir{
+        /* width: 600px;  
+        height: 600px; */
+        /* margin-bottom: 50%; */
+        /* margin-right: ; */
+        /* margin-top: -800px;
+        margin-right: 500px; */
+        /* margin-top: 20%; */
+        margin-top: -1200px;
+        margin-right: 450px;
+        
+        
+    }
+    .gudackiOkvir{
+        margin-top: -1000px;
+        margin-left: 30%;
+
+    }
+    .puhackiOkvir{
+
+        margin-top: -1700px;
+        margin-right: 450px;
+    }
+    .udaraljkeOkvir{
+         /* margin-top: 1000px; */
+         /* margin-left: 30%; */
+        margin-top: -700px;
+        margin-left: -390px;
+
+
+    }
+    .orkestarOkvir{
+         margin-top: -500px;
+        margin-left: 500px;
+    }
     
     .all{
           background-image: url("~/images/memKategorije.jpg");
