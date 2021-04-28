@@ -5,11 +5,14 @@ import { Label } from 'tns-core-modules/ui/label';
 import { isAndroid } from 'tns-core-modules/platform';
 import DictatsCompositions from './components/DictatsCompositions.vue'; 
 import Memory from './components/Memory.vue';
+import MemoryButtons from './components/MemoryButtons.vue';
+import Diktati from './components/Diktati.vue';
+
 
 Vue.registerElement("VideoPlayer", () => require("nativescript-videoplayer").Video);
 new Vue({
   
-  render: h => h('frame', [h(DictatsCompositions)])
+  render: h => h('frame', [h(Diktati)])
 }).$start()
 
 export function onLabelLoaded(args) {

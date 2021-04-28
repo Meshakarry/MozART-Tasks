@@ -3,7 +3,7 @@
 <ScrollView>
 <StackLayout orientation="vertical" class="glavni">
 
-  <!-- <AbsoluteLayout class="btn-back">
+   <AbsoluteLayout class="btn-back" @tap="open(var1=1)" >
                             <Label class="back"
                                 style="background-color: blue; height: 60; width: 60; border-radius: 50%; " />
                             <Label class="back2"
@@ -13,7 +13,8 @@
                                     <Span text.decode="&#xf060;" fontAttributes="Bold"></Span>
                                 </FormattedString>
                             </Label>
-            </AbsoluteLayout> -->
+                            <!-- <Button class="fas" text.decode="&#xf060;" ></Button> -->
+            </AbsoluteLayout>
 
              <StackLayout >
 
@@ -48,10 +49,28 @@
 //    const video = topmost().currentPage.getViewById('nativeVideoPlayer') as Video;
 
 // import { Video } from 'nativescript-videoplayer';
+import Diktati from '../components/Diktati'
 
 
-
-
+ export default {
+    computed: {
+      message() {
+        return "Blank {N}-Vue app";
+      }
+    },
+  data(){
+    return{
+       var1:1
+    }},
+    methods:{
+        open(var1){
+                
+                if(var1===1){
+                    this.$navigateTo(Diktati);
+                }
+    }
+ }
+ }
 </script>
 <style scoped>
 .glavni{

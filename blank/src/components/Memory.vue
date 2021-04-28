@@ -16,10 +16,12 @@
                             <!-- <Button class="fas" text.decode="&#xf060;" ></Button> -->
             </AbsoluteLayout>
 
-         <GridLayout class="okvir1" id="okvir1" ref="okvir1">
+
+         
+         <GridLayout class="okvir1" id="okvir1" ref="okvir1" >
                             
                           <Image v-if="image1" :key="image1.id"  class="jedan"
-                                 :src="image1.src"/> 
+                                 :src="image1.src" /> 
                            
         </GridLayout>
 
@@ -86,7 +88,6 @@
 
 
 
-
         </AbsoluteLayout>
     </ScrollView>
 </Page>
@@ -96,66 +97,18 @@
 // import images from '../images/curica.png'; 
 export default {
       
+setup(){
+  const CardList = [] 
 
-      data(){
-          return {
-             index: 0,
-      image1: null,
-      image2:null,
-      image3:null,
-      image4:null, 
-      image5:null, 
-      image6:null, 
-      image7:null, 
-      image8:null,
-      images: [
-          {
-          id: 1,
-        //   src: "https://i.pinimg.com/564x/eb/de/ea/ebdeea6715ef59d8b492f08ed5ca1494.jpg" 
-        src: "~/images/prva.jpg"
-        //   KLAVIR
-        },
-        {
-          id: 2,
-          src: "https://i.pinimg.com/564x/bc/71/c4/bc71c447d73322fd0dfe7612347b067e.jpg" 
-        //VIOLINA
-        
-          
-        },
-        {
-          id: 3,
-          src: "https://i.pinimg.com/564x/29/2b/06/292b06a448605bffc25b1d1fa85a1d2c.jpg"
-        //BUBANJ
-        },
-        {
-            id:4, 
-            src : "https://i.pinimg.com/564x/ef/45/f3/ef45f375da7cf6068a381cd6b559d03b.jpg"
-          //GITARA
-        }, 
-        {
-          id: 5,
-          src: "https://i.pinimg.com/564x/eb/de/ea/ebdeea6715ef59d8b492f08ed5ca1494.jpg" 
-        //   KLAVIR
-        
-        },
-        {
-             id: 6,
-          src: "https://i.pinimg.com/564x/bc/71/c4/bc71c447d73322fd0dfe7612347b067e.jpg" 
-        //VIOLINA
-        
-        },
-         {
-          id: 7,
-          src: "https://i.pinimg.com/564x/29/2b/06/292b06a448605bffc25b1d1fa85a1d2c.jpg"
-        //BUBANJ
-        },
-         {
-            id:8, 
-            src : "https://i.pinimg.com/564x/ef/45/f3/ef45f375da7cf6068a381cd6b559d03b.jpg"
-          //GITARA
-        }]
+  for(let i=0;i<16;i++)
+  {
+    CardList.push(i);
+  }
+  return{
+    CardList
+  }
 }
-      }
+      
 }
 </script>
 
