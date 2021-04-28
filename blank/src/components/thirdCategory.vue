@@ -121,8 +121,8 @@
         font-family: Font Awesome 5 Free, fa-solid-900;
         font-weight: 900;
         color: black;
-        top: 40%;
-        left: 30%;
+        top: 23%;
+        left: 25%;
         font-size: 30%;
     }
     .description-label {
