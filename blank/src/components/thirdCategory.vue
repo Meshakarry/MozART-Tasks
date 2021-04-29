@@ -6,7 +6,7 @@
         <ScrollView orientation="vertical">
 
             <StackLayout orientation="vertical" class="glavni">
-                <AbsoluteLayout @tap="$navigateBack">
+                <AbsoluteLayout  @tap="open(var1=1)">
                     <Label class="back"
                         style="background-color: blue; height: 60; width: 60; border-radius: 50%; " />
                     <Label class="back2"
@@ -94,6 +94,8 @@
 </template>
 
 <script>
+import Test from '../components/Test'
+
     export default {
         methods: {
             onItemTap: function(args) {
@@ -101,14 +103,20 @@
             },
             onButtonTap() {
                 console.log("Button was pressed");
-            }
+            },
+        open(var1){
+                
+                if(var1===1){
+                    this.$navigateTo(Test);
+                }
+    
         },
         data() {
             return {
                 textFieldValue: ""
             };
         }
-    };
+    }}
 </script>
 
 <style scoped>
@@ -121,8 +129,8 @@
         font-family: Font Awesome 5 Free, fa-solid-900;
         font-weight: 900;
         color: black;
-        top: 40%;
-        left: 30%;
+        top: 23%;
+        left: 25%;
         font-size: 30%;
     }
     .description-label {

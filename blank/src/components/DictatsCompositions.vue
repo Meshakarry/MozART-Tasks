@@ -3,7 +3,7 @@
 <ScrollView>
 <StackLayout orientation="vertical" class="glavni">
 
-  <AbsoluteLayout class="btn-back">
+   <AbsoluteLayout class="btn-back" @tap="open(var1=1)" >
                             <Label class="back"
                                 style="background-color: blue; height: 60; width: 60; border-radius: 50%; " />
                             <Label class="back2"
@@ -15,6 +15,16 @@
                             </Label>
                             <!-- <Button class="fas" text.decode="&#xf060;" ></Button> -->
             </AbsoluteLayout>
+
+             <StackLayout >
+
+            <VideoPlayer id="nativeVideoPlayer"
+            controls="true" loop="true" autoplay="false" height="500"
+            src="https://youtu.be/Tc8JAGmdbRc" ></VideoPlayer>
+
+            <!-- Remote file to test with https://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4 -->
+
+        </StackLayout>
 
           <!-- <exoplayer
         src="~/videos/morljubomor.mp4"
@@ -34,8 +44,33 @@
 </Page>
 </template>
 <script >
+// import { Video } from 'nativescript-videoplayer';
 //    import { Video } from 'nativescript-videoplayer';
 //    const video = topmost().currentPage.getViewById('nativeVideoPlayer') as Video;
+
+// import { Video } from 'nativescript-videoplayer';
+import Diktati from '../components/Diktati'
+
+
+ export default {
+    computed: {
+      message() {
+        return "Blank {N}-Vue app";
+      }
+    },
+  data(){
+    return{
+       var1:1
+    }},
+    methods:{
+        open(var1){
+                
+                if(var1===1){
+                    this.$navigateTo(Diktati);
+                }
+    }
+ }
+ }
 </script>
 <style scoped>
 .glavni{

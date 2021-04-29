@@ -3,7 +3,7 @@
 <ScrollView>
 <StackLayout orientation="vertical" class="glavni">
 
-  <AbsoluteLayout class="btn-back">
+  <AbsoluteLayout class="btn-back" @tap="open(var1=3)" >
                             <Label class="back"
                                 style="background-color: blue; height: 60; width: 60; border-radius: 50%; " />
                             <Label class="back2"
@@ -22,16 +22,17 @@
 
 <AbsoluteLayout class="prviOkvir">
     <AbsoluteLayout class="drugiOkvir">
-     <Button class="treciOkvir" text="JEDNOGLASNI DIKTAT" @tap="onTap" ></Button>    
+     <Button class="treciOkvir" text="ANALITIČKO SLUŠANJE TROZVUKA" @tap="onTap" ></Button>    
     </AbsoluteLayout>
 </AbsoluteLayout>
 
 
-<Label v-if="porukaNePrikazuj" class="tekstic" textWrap="true">
+<Label v-if="porukaNePrikazuj" class="tekstic" textWrap="true" @tap="open(var1=1)">
    <FormattedString >
           <Span class="tekstDiktata"
                 text="
-    1. Napisite u svoje kajdanke 10 cijelih nota d1 
+
+      1. Napisite u svoje kajdanke 10 cijelih nota d1 
        rasporedjenih u 10 taktova.
                 
    2. Zapišite šiframa i notama trozvuke koje prepoznajete
@@ -48,14 +49,15 @@
 
  <AbsoluteLayout class="prviOkvir2">
     <AbsoluteLayout class="drugiOkvir2">
-     <Button class="treciOkvir2" text="ANALITIČKO SLUŠANJE TROZVUKA" @tap="onTap" ></Button>    
+     <Button class="treciOkvir2" text="JEDNOGLASNI DIKTAT" @tap="onTap1" ></Button>    
     </AbsoluteLayout>
 </AbsoluteLayout> 
 
-<Label v-if="porukaNePrikazuj" class="tekstic2" textWrap="true">
+<Label v-if="porukaNePrikazuj1" class="tekstic2" textWrap="true" @tap="open(var1=2)">
    <FormattedString >
           <Span class="tekstDiktata2"
                 text="
+
     1. U nastavku će vam biti određen tonalitet
        i glazbena mjera kompozicije.
                 
@@ -77,6 +79,13 @@
 </Page>
 </template>
 <script>
+// import DictatsCompositions from './components/DictatsCompositions.vue'; 
+import DictatsCompositions from '../components/DictatsCompositions'
+import Test from '../components/Test'
+import Diktati from '../components/Diktati'
+
+
+
   export default {
     computed: {
       message() {
@@ -87,6 +96,11 @@
     return{
         porukaNePrikazuj : '',
         porukaPrikazi: "        1.  Napisite u svoje kajdanke 10 cijelih nota d1",
+       var1:1,
+         porukaNePrikazuj1 : '',
+        porukaPrikazi1: "        1.  Napisite u svoje kajdanke 10 cijelih nota d1",
+        var2:2
+
     }},
 methods:{
           onTap(){
@@ -97,7 +111,30 @@ methods:{
             else{
                 this.porukaPrikazi=this.porukaNePrikazuj
             }   
-          }
+          },
+          onTap1(){
+            if(this.porukaNePrikazuj1 === ''){
+                // console.log("Prikazi nesto")
+                this.porukaNePrikazuj1=this.porukaPrikazi1
+            }
+            else{
+                this.porukaPrikazi1=this.porukaNePrikazuj1
+            }   
+          }, 
+           open(var1){
+                
+                if(var1===1){
+                    this.$navigateTo(DictatsCompositions);
+                }else if(var1==2) {
+                    this.$navigateTo(DictatsCompositions);
+                console.log("When nothings goes right, go left");
+                }
+                else if(var1==3) {
+                    this.$navigateTo(Test);
+                console.log("When nothings goes right, go left");
+                }
+
+            }
         
 }
 }
@@ -126,7 +163,7 @@ methods:{
 }
 .drugiOkvir{
     background-color: #F2F1E1;
-    width: 820px;
+    width: 840px;
     height: 300px;
     border-radius: 70%;
     margin-top: 50px;
@@ -164,7 +201,7 @@ methods:{
 }
 .drugiOkvir2{
     background-color: #F2F1E1;
-    width: 820px;
+    width: 840px;
     height: 300px;
     border-radius: 70%;
     margin-top: 50px;
