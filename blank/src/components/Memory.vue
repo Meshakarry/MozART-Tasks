@@ -3,7 +3,7 @@
     <ScrollView>
         <AbsoluteLayout orientation="vertical" class="glavni">
 
-           <AbsoluteLayout class="btn-back">
+           <AbsoluteLayout class="btn-back" @tap="open(var1=1)">
                             <Label class="back"
                                 style="background-color: blue; height: 60; width: 60; border-radius: 50%; " />
                             <Label class="back2"
@@ -95,8 +95,21 @@
 
 <script>
 // import images from '../images/curica.png'; 
+    import MemoryCategories from '../components/MemoryCategories'
 export default {
-      
+
+
+
+
+    
+     methods: {
+          open(var1){
+                
+                if(var1===1){
+                    this.$navigateTo(MemoryCategories);
+                }
+    
+        }},
 setup(){
   const CardList = [] 
 

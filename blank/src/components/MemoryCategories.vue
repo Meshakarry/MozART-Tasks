@@ -3,7 +3,7 @@
         <StackLayout orientation="vertical" class="all">
   <!-- <ScrollView> -->
 
-        <AbsoluteLayout class="btn-back" @tap="$navigateBack">
+        <AbsoluteLayout class="btn-back" @tap="open(var1=2)">
                                     <Label  class="back"
                                         style="background-color: blue; height: 60; width: 60; border-radius: 50%; " />
                                     <Label class="back2"
@@ -40,33 +40,33 @@
 
                    </AbsoluteLayout> -->
 
-         <GridLayout >
+         <GridLayout @tap="open(var1=1)">
             <StackLayout>
               <Image class="StipkamaOkvir" src="~/images/insTipkama.png" ></Image>
             </StackLayout>
         </GridLayout >
-          <GridLayout class="trzalackiOkvir" >
+          <GridLayout class="trzalackiOkvir" @tap="open(var1=1)">
             <StackLayout>
               <Image  src="~/images/trzalacki.png" ></Image>
             </StackLayout>
         </GridLayout>
 
-        <GridLayout class="gudackiOkvir">
+        <GridLayout class="gudackiOkvir" @tap="open(var1=1)">
             <StackLayout>
               <Image src="~/images/gudacki.png" ></Image>
             </StackLayout>
         </GridLayout>
-         <GridLayout class="puhackiOkvir">
+         <GridLayout class="puhackiOkvir" @tap="open(var1=1)">
             <StackLayout>
               <Image src="~/images/puhacki.png" ></Image>
             </StackLayout>
         </GridLayout>
-         <GridLayout class="udaraljkeOkvir">
+         <GridLayout class="udaraljkeOkvir" @tap="open(var1=1)">
             <StackLayout>
               <Image src="~/images/udaraljke.png" ></Image>
             </StackLayout>
         </GridLayout>
-         <GridLayout class="orkestarOkvir">
+         <GridLayout class="orkestarOkvir" @tap="open(var1=1)">
             <StackLayout>
               <Image src="~/images/orkestar.png" ></Image>
             </StackLayout>
@@ -80,6 +80,27 @@
 </Page>
 
 </template>
+<script>
+import Memory from '../components/Memory'
+import GameBox from '../components/GameBox'
+
+export default {
+    
+     methods: {
+          open(var1){
+                
+                if(var1===1){
+                    this.$navigateTo(Memory);
+                }
+                else if(var1==2) {
+                    this.$navigateTo(GameBox);
+                }
+         
+    
+        }
+     }
+}
+</script>
 
 <style scoped>
 .fas {
