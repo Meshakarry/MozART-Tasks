@@ -37,6 +37,7 @@
                 src="https://wallpapercave.com/wp/X49EwD0.jpg"
                 row="0"
                 col="0"
+                
                 class="droparea_square" 
                 />
                 <Image
@@ -744,7 +745,7 @@
 <style lang="scss" scoped>
 // @import "./booking.scss";
 .droparea_square {
-    margin: 15;
+     margin: 15;
     width: 130;
     height: 110;
 }

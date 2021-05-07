@@ -146,21 +146,18 @@
                     //       this.image1=this.image2;
                     //     this.image2=zapamti;
                      if(this.index===0){
-                         console.log("prvo sam usao u ovaj if uslov");
                     this.image1=this.images[1];
                     this.image2=this.images[0];
                         this.kategorijaTekst="  Mali školarci";
                      this.index++;//vrijednost indexa je sada 1
                      }
                     else if(this.index===1){
-                        console.log("srce mi je propo handzar");
                         this.image1=this.images[2]; //ovdje bi trebalo da uzme trecu sliku
                         this.image2=this.images[1];
                         this.image3=this.images[0];
                         this.kategorijaTekst="  Veliki školarci";
                         this.index++;
                     }else if(this.index===2){
-                        console.log("treci uslov je kliknut");
                         this.image1=this.images[0];
                         this.image3=this.images[2];
                         this.kategorijaTekst="  Predškolarci";
@@ -178,7 +175,7 @@
                 }else{
                     this.$navigateTo(thirdCategory);
                 }
-                console.log("When nothings goes right, go left");
+                // console.log("When nothings goes right, go left");
             }
     },
      mounted() {
