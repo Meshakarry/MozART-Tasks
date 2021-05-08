@@ -81,7 +81,7 @@
 <script>
 // import DictatsCompositions from './components/DictatsCompositions.vue'; 
 import DictatsCompositions from '../components/DictatsCompositions'
-import Test from '../components/Test'
+import Home from '../components/Home'
 import Diktati from '../components/Diktati'
 
 
@@ -129,7 +129,7 @@ methods:{
                 
                 }
                 else if(var1==3) {
-                    this.$navigateTo(Test);
+                    this.$navigateTo(Home);
              
                 }
 
