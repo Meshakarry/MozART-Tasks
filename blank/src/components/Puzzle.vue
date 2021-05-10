@@ -1,7 +1,7 @@
 
 <template>
     <Page actionBarHidden="true">
-        <StackLayout>
+        <StackLayout class="glavni">
             <AbsoluteLayout class="btn-back" @tap="$navigateBack">
                 <Label  class="back"
                     style="background-color: blue; height: 60; width: 60; border-radius: 50%; " />
@@ -21,23 +21,26 @@
                 columns="auto"
                 verticalAlignment="top"
                 horizontalAlignment="center"
+                borderRadius="10" borderColor="grey" borderWidth="1"
             >
-                <Image src="~/images/Boy.jpg"  verticalAlignment="top" horizontalAlignment="center"/>
+                <Image class="glavnaSlika" src="~/images/Boy.jpg"  verticalAlignment="top" horizontalAlignment="center"/>
             </GridLayout>
 
             <GridLayout
+                class="puzzle"
                 ref="grid"
                 rows="auto, auto"
-                columns="auto,auto"
+                columns="auto, auto"
                 verticalAlignment="bottom"
                 horizontalAlignment="center"
+                verticalSpacing = "0"
+                horizontalSpacing = "0"
             >
                 <Image
                 ref="dropArea0"
                 src="https://wallpapercave.com/wp/X49EwD0.jpg"
                 row="0"
-                col="0"
-                
+                col="0"            
                 class="droparea_square" 
                 />
                 <Image
@@ -745,13 +748,17 @@
 <style lang="scss" scoped>
 // @import "./booking.scss";
 .droparea_square {
-     margin: 15;
+    margin: 15;
     width: 130;
     height: 110;
 }
 .drag_item {
     width: 90;
     height: 70;
+}
+.glavnaSlika {
+    opacity: .3;
+    width: 20%;
 }
 .fas {
     font-family: Font Awesome 5 Free, fa-solid-900;
@@ -760,5 +767,11 @@
     top: 42%;
     left: 31%;
     font-size: 30%;
+}
+.puzzle {
+    margin-top: 5%;
+    //background-color: red;
+    transform: scale(1.0);
+    margin-left: 0;
 }
 </style>
