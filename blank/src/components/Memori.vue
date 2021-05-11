@@ -27,6 +27,7 @@
                         </GridLayout>
                     </FlexBoxLayout> 
         <Button @tap="reset"> Ponovo Pokreni</Button> 
+        <Label text="promjena samo za dinu jer je smotana pa moramo ovako"> </Label>
               
 
 </StackLayout>
