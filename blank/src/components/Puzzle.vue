@@ -30,39 +30,40 @@
                 class="puzzle"
                 ref="grid"
                 rows="auto, auto"
-                columns="auto, auto"
+                columns="*, *"
                 verticalAlignment="bottom"
                 horizontalAlignment="center"
                 verticalSpacing = "0"
                 horizontalSpacing = "0"
+                borderRadius="10" borderColor="crimson" borderWidth="1"
             >
                 <Image
                 ref="dropArea0"
-                src="https://wallpapercave.com/wp/X49EwD0.jpg"
                 row="0"
                 col="0"            
                 class="droparea_square" 
+                borderRadius="10" borderColor="tomato" borderWidth="0.7"
                 />
                 <Image
                 ref="dropArea1"
-                src="https://wallpapercave.com/wp/X49EwD0.jpg"
                 row="0"
                 col="1"
                 class="droparea_square"
+                borderRadius="10" borderColor="tomato" borderWidth="0.7"
                 />
                 <Image
                 ref="dropArea2"
-                src="https://wallpapercave.com/wp/X49EwD0.jpg"
                 row="1"
                 col="0"
                 class="droparea_square"
+                borderRadius="10" borderColor="tomato" borderWidth="0.7"
                 />
                 <Image
                 ref="dropArea3"
-                src="https://wallpapercave.com/wp/X49EwD0.jpg"
                 row="1"
                 col="1"
                 class="droparea_square"
+                borderRadius="10" borderColor="tomato" borderWidth="0.7"
                 />
                 <Image
                 v-for="(drag, index) in boxArray"
@@ -75,13 +76,16 @@
                 @pan="onPan($event, index, drag)"
                 />
             </GridLayout>
-            <Image src="~/images/correct.png" width="50" height="50" v-if="right" />
+            <Image v-if="right" />
         </StackLayout>
     </Page>
 </template>
 
 <script>
     import { PanGestureEventData } from "ui/gestures";
+    import { ImagePopup } from 'nativescript-image-popup';
+    import { ImagePopupOptions } from 'nativescript-image-popup/classes';
+
     export default {
     name: "Home",
     data() {
@@ -736,8 +740,9 @@
             }, 100);
             }
             if (JSON.stringify(this.boxArray) === JSON.stringify(this.finalArray)) {
-            console.log("Correct.");
-            this.right = true;
+                console.log("Correct.");
+                ImagePopup.localImagePopup("~/images/Boy.jpg");
+                this.right = true;
             }
         }
         },
@@ -751,10 +756,12 @@
     margin: 15;
     width: 130;
     height: 110;
+    //transform: scale(1.25);
 }
 .drag_item {
     width: 90;
     height: 70;
+    //transform: scale(1.25);
 }
 .glavnaSlika {
     opacity: .3;
@@ -770,8 +777,8 @@
 }
 .puzzle {
     margin-top: 5%;
-    //background-color: red;
-    transform: scale(1.0);
-    margin-left: 0;
+    padding: 0;
+    transform: scale(1.1);
+    // background-color: red;
 }
 </style>
