@@ -15,32 +15,20 @@
                             </Label>
                             <!-- <Button class="fas" text.decode="&#xf060;" ></Button> -->
             </AbsoluteLayout>
-            <!-- <AbsoluteLayout class="memory" left="0"> -->
-        <StackLayout orientation="horizontal" >
-            <StackLayout class="memoryList" width="40%"  >
-                <GridLayout   v-for="card in tipkeCards" class="okvir" :class="{'flipped':card.isFlipped }" :key="card.id" @tap="turn(card)">
-                    
-                        <Image src="~/images/druga.jpg" class="slika" /> 
-                <Image v-if="card.isFlipped" class="fliped" stretch="aspectFill"  :src="card.img"/>
-                    
-                </GridLayout>
-                
-            </StackLayout>
+        
 
-            <StackLayout class="memoryList2" width="40%" >
-                    <GridLayout   v-for="card in memoryCards" class="okvir" :class="{'flipped':card.isFlipped }" :key="card.id" @tap="turn(card)">
-                        
-                            <Image src="~/images/druga.jpg" class="slika" /> 
-                    <Image v-if="card.isFlipped" class="fliped" stretch="aspectFill"  :src="card.img"/>
-                        
-                    </GridLayout>
-            </StackLayout>
+            <!-- <StackLayout class="memoryOkvir" orientation="horizontal" borderRadius="10" borderColor="grey" borderWidth="1" >  -->
+                    <FlexBoxLayout class="memoryList"  >
+                        <GridLayout   v-for="card in memoryCards" class="okvir" :class="{'flipped':card.isFlipped,'matched':card.isMatched}" :key="card.id" @tap="turn(card)">
+                            
+                                <Image src="~/images/druga.jpg" class="slika" /> 
+                        <Image v-if="card.isFlipped" class="fliped" stretch="aspectFill"  :src="card.img"/>
+                            
+                        </GridLayout>
+                    </FlexBoxLayout> 
+        <Button @tap="reset"> Ponovo Pokreni</Button> 
+              
 
-    
-        </StackLayout>
-   
-
-            <!-- </AbsoluteLayout> -->
 </StackLayout>
    </Page>
 
@@ -49,6 +37,7 @@
 
 <script> 
  import _ from 'lodash'
+    import { ImagePopup } from 'nativescript-image-popup';
 
  export default{
      data(){
@@ -60,7 +49,8 @@
                                id:0,
                                name: 'klavir',
                                img: "~/images/klavir.jpg",
-                               isFlipped:false
+                               isFlipped:false,
+                               isMatched:false
            
                            },
                            {
@@ -68,7 +58,9 @@
 
                                name: 'harmonika',
                                img: "~/images/harmonika.jpg",
-                               isFlipped:false
+                               isFlipped:false,
+                               isMatched:false
+
             
                            },
                            {
@@ -76,7 +68,9 @@
 
                                name: 'cembalo',
                                img: "~/images/cembalo.jpg",
-                               isFlipped:false
+                               isFlipped:false,
+                               isMatched:false
+
            
                            },
                            {  
@@ -84,26 +78,68 @@
 
                                name: 'sintisazjer',
                                img: "~/images/sintisajzer.jpg",
-                               isFlipped:false
+                               isFlipped:false,
+                               isMatched:false
+
                            }
             ],
-            memoryCards:[]
+            memoryCards:[],
+            flippedCards:[],
+            finish:false,
          }
        },
         created(){
-        this.tipkeCards.forEach((card) => {
-            card.isFlipped = false;
-        });
-         var cards1=_.cloneDeep(this.tipkeCards);
-         var cards2=_.cloneDeep(this.tipkeCards);
-        //  this.memoryCards = _.shuffle(this.memoryCards.concat(cards1, cards2));//8
-         this.tipkeCards=_.shuffle(cards1);
-         this.memoryCards=_.shuffle(cards2);
+       this.reset();
+
     },
        methods:{
             turn(card){
-               card.isFlipped=true;
+                    if(card.isMatched || card.isFlipped || this.flippedCards.length === 2)
+                          return;
+                card.isFlipped=true;
 
+                if(this.flippedCards.length < 2)
+                    this.flippedCards.push(card);
+                if(this.flippedCards.length === 2)    
+                    this.match(card);
+
+           },
+           match(card){
+                if(this.flippedCards[0].name === this.flippedCards[1].name){
+                        setTimeout(() => {
+                        this.flippedCards.forEach(card => card.isMatched = true);
+                        this.flippedCards = [];
+                         //all card matched
+                        if(this.memoryCards.every(card => card.isMatched === true)){
+                        ImagePopup.localImagePopup("~/images/congrats.jpg");
+                        this.finish = true;
+
+    }
+                    }, 400);
+                }
+                else{
+                   setTimeout(() => {
+                        this.flippedCards.forEach((card) => {card.isFlipped = false});
+                        this.flippedCards = [];
+                    }, 800);
+                }
+                
+           },
+           reset(){
+                    this.tipkeCards.forEach((card) => {
+                    card.isFlipped = false;
+                    card.isMatched=false;
+                });
+
+                setTimeout(() => {  
+                this.memoryCards = [];
+                this.memoryCards = _.shuffle(this.memoryCards.concat(_.cloneDeep(this.tipkeCards), _.cloneDeep(this.tipkeCards)));
+               
+                 this.finish = false;
+                 this.flippedCards = [];
+                
+                }, 600);
+                
            }
        }
             
@@ -115,6 +151,9 @@
 </script>
 
 <style scoped>
+*{
+    box-sizing: border-box;
+}
 
 .fas {
         font-family: Font Awesome 5 Free, fa-solid-900;
@@ -133,34 +172,30 @@
     
  }
 
- .memoryList{
-    /* display: flex; 
-    
-    flex-flow: column wrap;
-      justify-content: space-around; */
-      /* align-content: stretch;  */
-     /* background-color: red; */
-    /* width:30%;
-    margin-top: 5%;
-    margin-right: 65%; */
-    margin-left:8%;
-       
-   
-     
+ .memoryList {
+     /* margin-left:8%; */
+    /* width:100%; */
+     /* height: 68%;
+     padding: 30px; */
+     display: flex;
+     flex-flow: row wrap;
+     width:70%;
  }
  .memoryList2{
-    /* background-color: yellow; */
-    /* width: 30%; */
     margin-right:8%;
     
-
-
  }
- 
- 
  .fliped{
       height: 300px;
     width: 300px;
+ }
+ .matched{
+     opacity: 0.3;
+ }
+ .memoryOkvir{
+     height:67%;
+     /* display: flex; */
+     /* flex-flow: column nowrap; */
  }
  
 </style>
