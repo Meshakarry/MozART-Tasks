@@ -27,18 +27,18 @@
 </AbsoluteLayout>
 
 
-<Label v-if="porukaNePrikazuj" class="tekstic" textWrap="true" @tap="open(var1=1)">
+<Label v-if="porukaNePrikazuj" class="tekstic" textWrap="true"  textAlignment="center" @tap="open(var1=1)">
    <FormattedString >
-          <Span class="tekstDiktata"
+          <Span class="tekstDiktata" 
                 text="
 
       1. Napisite u svoje kajdanke 10 cijelih nota d1 
        rasporedjenih u 10 taktova.
                 
-   2. Zapišite šiframa i notama trozvuke koje prepoznajete
+     2. Zapišite šiframa i notama trozvuke koje prepoznajete
       u audio zapisu.
                 
-          * Zvuk se može preslušati 3 puta">
+    * Zvuk se može preslušati 3 puta">
           </Span>
   </FormattedString>
 </Label> 
@@ -53,7 +53,7 @@
     </AbsoluteLayout>
 </AbsoluteLayout> 
 
-<Label v-if="porukaNePrikazuj1" class="tekstic2" textWrap="true" @tap="open(var1=2)">
+<Label v-if="porukaNePrikazuj1" class="tekstic2" textWrap="true" textAlignment="center" @tap="open(var1=2)">
    <FormattedString >
           <Span class="tekstDiktata2"
                 text="
@@ -81,7 +81,7 @@
 <script>
 // import DictatsCompositions from './components/DictatsCompositions.vue'; 
 import DictatsCompositions from '../components/DictatsCompositions'
-import Test from '../components/Test'
+import Home from '../components/Home'
 import Diktati from '../components/Diktati'
 
 
@@ -99,7 +99,8 @@ import Diktati from '../components/Diktati'
        var1:1,
          porukaNePrikazuj1 : '',
         porukaPrikazi1: "        1.  Napisite u svoje kajdanke 10 cijelih nota d1",
-        var2:2
+        var2:2,
+        zatvori:false
 
     }},
 methods:{
@@ -107,19 +108,17 @@ methods:{
             if(this.porukaNePrikazuj === ''){
                 // console.log("Prikazi nesto")
                 this.porukaNePrikazuj=this.porukaPrikazi
+                this.porukaNePrikazuj1='';
+
             }
-            else{
-                this.porukaPrikazi=this.porukaNePrikazuj
-            }   
+             
           },
           onTap1(){
             if(this.porukaNePrikazuj1 === ''){
-                // console.log("Prikazi nesto")
                 this.porukaNePrikazuj1=this.porukaPrikazi1
+              this.porukaNePrikazuj='';
             }
-            else{
-                this.porukaPrikazi1=this.porukaNePrikazuj1
-            }   
+           
           }, 
            open(var1){
                 
@@ -127,11 +126,11 @@ methods:{
                     this.$navigateTo(DictatsCompositions);
                 }else if(var1==2) {
                     this.$navigateTo(DictatsCompositions);
-                console.log("When nothings goes right, go left");
+                
                 }
                 else if(var1==3) {
-                    this.$navigateTo(Test);
-                console.log("When nothings goes right, go left");
+                    this.$navigateTo(Home);
+             
                 }
 
             }

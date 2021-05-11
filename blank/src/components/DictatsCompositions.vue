@@ -18,9 +18,9 @@
 
              <StackLayout >
 
-            <VideoPlayer id="nativeVideoPlayer"
+            <!-- <VideoPlayer id="nativeVideoPlayer"
             controls="true" loop="true" autoplay="false" height="500"
-            src="https://youtu.be/Tc8JAGmdbRc" ></VideoPlayer>
+            src="https://youtu.be/Tc8JAGmdbRc" ></VideoPlayer> -->
 
             <!-- Remote file to test with https://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4 -->
 

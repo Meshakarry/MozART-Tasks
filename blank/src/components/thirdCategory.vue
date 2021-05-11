@@ -94,7 +94,7 @@
 </template>
 
 <script>
-import Test from '../components/Test'
+import Home from '../components/Home'
 
     export default {
         methods: {
@@ -107,7 +107,7 @@ import Test from '../components/Test'
         open(var1){
                 
                 if(var1===1){
-                    this.$navigateTo(Test);
+                    this.$navigateTo(Home);
                 }
     
         },
