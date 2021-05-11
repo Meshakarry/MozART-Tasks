@@ -9,6 +9,7 @@
     "@nativescript/core": "^7.3.0",
     "@nativescript/theme": "^2.3.3",
     "@vue/devtools": "^5.3.3",
+    "lodash": "^4.17.21",
     "nativescript": "^6.4.1",
     "nativescript-exoplayer": "^4.0.2",
     "nativescript-socketio": "^3.3.1",
