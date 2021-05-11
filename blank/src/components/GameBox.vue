@@ -3,7 +3,7 @@
 
 <ScrollView>
 
-        <StackLayout orientation="vertical" class="glavni">
+        <StackLayout orientation="vertical" @tap="open(var1=4)">
 
             <AbsoluteLayout class="btn-back" @tap="$navigateBack">
                             <Label  class="back"
@@ -19,13 +19,13 @@
             </AbsoluteLayout>
 
 
-            <AbsoluteLayout class="prvi">
+            <AbsoluteLayout class="prvi" @tap="open(var1=1)">
                     <Label class="memory" text=" Memory " textAlignment="center"></Label>
             </AbsoluteLayout>
-            <AbsoluteLayout class="drugi">
+            <AbsoluteLayout class="drugi" @tap="open(var1=2)">
                 <Label class="pazl" text=" Puzzle " textAlignment="center"></Label>
             </AbsoluteLayout>
-             <AbsoluteLayout class="treci">
+             <AbsoluteLayout class="treci" @tap="open(var1=3)">
                 <Label class="hear" text=" Prepoznaj instrument " textAlignment="center"></Label>
             </AbsoluteLayout>
 
@@ -64,9 +64,29 @@
 </template>
 
 <script>
+    import MemoryCategories from '../components/MemoryCategories'
+    import Puzzle from '../components/Puzzle'
+    import Test from '../components/Test'
+
+
+
     export default {
         methods: {
-          
+          open(var1){
+                
+                if(var1===1){
+                    this.$navigateTo(MemoryCategories);
+                }else if(var1==2) {
+                    this.$navigateTo(Puzzle);
+                }
+                else if(var1==3) {
+                    this.$navigateTo(Puzzle);
+                }
+                else{
+                    this.$navigateTo(Test);
+                }
+                console.log("When nothings goes right, go left");
+            }
         },
         data() {
             return {

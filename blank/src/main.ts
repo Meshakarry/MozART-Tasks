@@ -9,6 +9,9 @@ import MemoryButtons from './components/MemoryButtons.vue';
 import Diktati from './components/Diktati.vue';
 import thirdCategory from './components/thirdCategory.vue';
 import MemoryCategories from './components/MemoryCategories.vue';
+import Puzzle from './components/Puzzle.vue';
+
+
 
 
 
@@ -18,7 +21,7 @@ import MemoryCategories from './components/MemoryCategories.vue';
 Vue.registerElement("VideoPlayer", () => require("nativescript-videoplayer").Video);
 new Vue({
   
-  render: h => h('frame', [h(MemoryCategories)])
+  render: h => h('frame', [h(Test)])
 }).$start()
 
 export function onLabelLoaded(args) {

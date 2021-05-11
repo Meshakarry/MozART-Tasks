@@ -2,7 +2,7 @@
 <template>
     <Page actionBarHidden="true">
         <StackLayout>
-            <AbsoluteLayout class="btn-back" @tap="$navigateBack">
+            <AbsoluteLayout class="btn-back" @tap="open(var1=1)">
                 <Label  class="back"
                     style="background-color: blue; height: 60; width: 60; border-radius: 50%; " />
                 <Label class="back2"
@@ -77,6 +77,8 @@
 </template>
 
 <script>
+  import GameBox from '../components/GameBox'
+
     import { PanGestureEventData } from "ui/gestures";
     export default {
     name: "Home",
@@ -736,7 +738,15 @@
             this.right = true;
             }
         }
-        },
+        },  
+        open(var1){
+                
+                if(var1===1){
+                    this.$navigateTo(GameBox);
+                }
+    
+        }
+      
     },
 };
 </script>
