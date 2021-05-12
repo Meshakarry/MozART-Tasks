@@ -66,7 +66,7 @@
 <script>
     import MemoryCategories from '../components/MemoryCategories'
     import Puzzle from '../components/Puzzle'
-    import Test from '../components/Test'
+    import Home from '../components/Home'
 
 
 
@@ -83,7 +83,7 @@
                     this.$navigateTo(Puzzle);
                 }
                 else{
-                    this.$navigateTo(Test);
+                    this.$navigateTo(Home);
                 }
                 console.log("When nothings goes right, go left");
             }
