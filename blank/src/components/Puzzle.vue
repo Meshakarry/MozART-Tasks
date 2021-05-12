@@ -1,8 +1,8 @@
 
 <template>
     <Page actionBarHidden="true">
-        <StackLayout>
-            <AbsoluteLayout class="btn-back" @tap="open(var1=1)">
+        <StackLayout class="glavni">
+            <AbsoluteLayout class="btn-back" @tap="$navigateBack">
                 <Label  class="back"
                     style="background-color: blue; height: 60; width: 60; border-radius: 50%; " />
                 <Label class="back2"
@@ -21,44 +21,49 @@
                 columns="auto"
                 verticalAlignment="top"
                 horizontalAlignment="center"
+                borderRadius="10" borderColor="grey" borderWidth="1"
             >
-                <Image src="~/images/Boy.jpg"  verticalAlignment="top" horizontalAlignment="center"/>
+                <Image class="glavnaSlika" src="~/images/Boy.jpg"  verticalAlignment="top" horizontalAlignment="center"/>
             </GridLayout>
 
             <GridLayout
+                class="puzzle"
                 ref="grid"
                 rows="auto, auto"
-                columns="auto,auto"
+                columns="*, *"
                 verticalAlignment="bottom"
                 horizontalAlignment="center"
+                verticalSpacing = "0"
+                horizontalSpacing = "0"
+                borderRadius="10" borderColor="crimson" borderWidth="1"
             >
                 <Image
                 ref="dropArea0"
-                src="https://wallpapercave.com/wp/X49EwD0.jpg"
                 row="0"
-                col="0"
+                col="0"            
                 class="droparea_square" 
+                borderRadius="10" borderColor="tomato" borderWidth="0.7"
                 />
                 <Image
                 ref="dropArea1"
-                src="https://wallpapercave.com/wp/X49EwD0.jpg"
                 row="0"
                 col="1"
                 class="droparea_square"
+                borderRadius="10" borderColor="tomato" borderWidth="0.7"
                 />
                 <Image
                 ref="dropArea2"
-                src="https://wallpapercave.com/wp/X49EwD0.jpg"
                 row="1"
                 col="0"
                 class="droparea_square"
+                borderRadius="10" borderColor="tomato" borderWidth="0.7"
                 />
                 <Image
                 ref="dropArea3"
-                src="https://wallpapercave.com/wp/X49EwD0.jpg"
                 row="1"
                 col="1"
                 class="droparea_square"
+                borderRadius="10" borderColor="tomato" borderWidth="0.7"
                 />
                 <Image
                 v-for="(drag, index) in boxArray"
@@ -71,15 +76,16 @@
                 @pan="onPan($event, index, drag)"
                 />
             </GridLayout>
-            <Image src="~/images/correct.png" width="50" height="50" v-if="right" />
+            <Image v-if="right" />
         </StackLayout>
     </Page>
 </template>
 
 <script>
-  import GameBox from '../components/GameBox'
-
     import { PanGestureEventData } from "ui/gestures";
+    import { ImagePopup } from 'nativescript-image-popup';
+    import { ImagePopupOptions } from 'nativescript-image-popup/classes';
+
     export default {
     name: "Home",
     data() {
@@ -734,19 +740,12 @@
             }, 100);
             }
             if (JSON.stringify(this.boxArray) === JSON.stringify(this.finalArray)) {
-            console.log("Correct.");
-            this.right = true;
+                console.log("Correct.");
+                ImagePopup.localImagePopup("~/images/Boy.jpg");
+                this.right = true;
             }
         }
-        },  
-        open(var1){
-                
-                if(var1===1){
-                    this.$navigateTo(GameBox);
-                }
-    
-        }
-      
+        },
     },
 };
 </script>
@@ -757,10 +756,16 @@
     margin: 15;
     width: 130;
     height: 110;
+    //transform: scale(1.25);
 }
 .drag_item {
     width: 90;
     height: 70;
+    //transform: scale(1.25);
+}
+.glavnaSlika {
+    opacity: .3;
+    width: 20%;
 }
 .fas {
     font-family: Font Awesome 5 Free, fa-solid-900;
@@ -769,5 +774,11 @@
     top: 42%;
     left: 31%;
     font-size: 30%;
+}
+.puzzle {
+    margin-top: 5%;
+    padding: 0;
+    transform: scale(1.1);
+    // background-color: red;
 }
 </style>
