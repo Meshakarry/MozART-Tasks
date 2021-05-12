@@ -21,12 +21,12 @@
                     <FlexBoxLayout class="memoryList"  >
                         <GridLayout   v-for="card in memoryCards" class="okvir" :class="{'flipped':card.isFlipped,'matched':card.isMatched}" :key="card.id" @tap="turn(card)">
                             
-                                <Image src="~/images/druga.jpg" class="slika" /> 
+                                <Image src="~/images/zutaNova.jpg" class="slika" /> 
                         <Image v-if="card.isFlipped" class="fliped" stretch="aspectFill"  :src="card.img"/>
                             
                         </GridLayout>
                     </FlexBoxLayout> 
-        <Button @tap="reset"> Ponovo Pokreni</Button> 
+        <Button @tap="reset" class="PonovoPokreni"> Ponovo Pokreni</Button> 
               
 
 </StackLayout>
@@ -196,6 +196,15 @@
      height:67%;
      /* display: flex; */
      /* flex-flow: column nowrap; */
+ }
+ .PonovoPokreni{
+     width: 400px;
+     height: 400px;
+     border-radius: 50%;
+     background-color: #ffff80;
+     color: black;
+    margin-top: -1500px;
+
  }
  
 </style>

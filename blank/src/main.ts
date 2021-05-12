@@ -11,6 +11,7 @@ import thirdCategory from './components/thirdCategory.vue';
 import MemoryCategories from './components/MemoryCategories.vue';
 import Puzzle from './components/Puzzle.vue';
 import PogodiInstrument from './components/PogodiInstrument.vue';
+import Memori from './components/Memori.vue';
 
 
 
@@ -23,7 +24,7 @@ import PogodiInstrument from './components/PogodiInstrument.vue';
 Vue.registerElement("VideoPlayer", () => require("nativescript-videoplayer").Video);
 new Vue({
   
-  render: h => h('frame', [h(PogodiInstrument)])
+  render: h => h('frame', [h(Memori)])
 }).$start()
 
 export function onLabelLoaded(args) {
