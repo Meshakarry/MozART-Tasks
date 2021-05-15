@@ -12,6 +12,10 @@ import MemoryCategories from './components/MemoryCategories.vue';
 import Puzzle from './components/Puzzle.vue';
 import PogodiInstrument from './components/PogodiInstrument.vue';
 import Memori from './components/Memori.vue';
+import GameBox from './components/GameBox.vue'
+import PogodiInstrument4 from './components/PogodiInstrument4.vue';
+
+
 
 
 
@@ -24,7 +28,7 @@ import Memori from './components/Memori.vue';
 Vue.registerElement("VideoPlayer", () => require("nativescript-videoplayer").Video);
 new Vue({
   
-  render: h => h('frame', [h(Memori)])
+  render: h => h('frame', [h(PogodiInstrument)])
 }).$start()
 
 export function onLabelLoaded(args) {

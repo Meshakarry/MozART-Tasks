@@ -1,7 +1,7 @@
 <template>
     <Page class="sve" actionBarHidden="true">
 
-<ScrollView>
+<ScrollView class="glavni">
 
         <StackLayout orientation="vertical" @tap="open(var1=4)">
 
@@ -120,5 +120,10 @@
     }
     .description-label {
         margin-bottom: 15;
+    }
+    .glavni{
+         background-image: url("~/images/GB.jpg");
+        background-size: cover;
+        background-position: center;
     }
 </style>

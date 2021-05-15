@@ -38,7 +38,7 @@
 
    <GridLayout v-if="porukaNePrikazuj" class="TacanOdgovorSlika" textWrap="true"  textAlignment="center">
              <StackLayout>
-              <Image  src="~/images/tacanOdgovor1.jpg" ></Image>
+              <Image  src="~/images/netacanOdgovor.jpg" ></Image>
                </StackLayout>
         </GridLayout>
 
@@ -50,14 +50,14 @@
 
          <GridLayout v-if="porukaNePrikazuj" class="NETacanOdgovorSlika2" textWrap="true"  textAlignment="center">
              <StackLayout>
-              <Image src="~/images/netacanOdgovor.jpg" ></Image>
+              <Image src="~/images/tacanOdgovor1.jpg" ></Image>
                </StackLayout>
         </GridLayout>
 
 
 
 <Button class="PokreniPonovo" text="Pokreni ponovo" @tap="open(var1=1)"></Button>
-<Button class="PokreniNarednu" text="Pokreni narednu" @tap="open(var1=2)"></Button>
+<Button class="PokreniNarednu" text="Vidi rezultat" @tap="open(var1=2)"></Button>
 
 
          
@@ -67,8 +67,10 @@
 </Page>
 </template>
 <script>
-  import PogodiInstrument from '../components/PogodiInstrument'
   import PogodiInstrument2 from '../components/PogodiInstrument2'
+  import PogodiInstrument3 from '../components/PogodiInstrument3'
+  import PogodiInstrument4 from '../components/PogodiInstrument4'
+
 
 
 export default {
@@ -101,9 +103,10 @@ export default {
           open(var1){
                 
                 if(var1===1){
-                    this.$navigateTo(PogodiInstrument);
-                }else if(var1==2) {
-                    this.$navigateTo(PogodiInstrument2);
+                    this.$navigateTo(PogodiInstrument3);
+                }
+                else if(var1==2) {
+                    this.$navigateTo(PogodiInstrument4);
                 
                 }
           }
@@ -129,7 +132,7 @@ export default {
         font-size: 30%;
     }
     .ZaVideo{
-        background-image: url("~/images/kompozicija.png");
+        background-image: url("~/images/punoNota.png");
         background-size: cover;
         background-position: center;
         background-color: black;
@@ -183,7 +186,7 @@ export default {
         background-position: center;
     }
 .TacanOdgovorSlika{
-        height: 150px;
+  height: 150px;
         width: 150px;
         margin-top: 650px;
         margin-left: 10%;
