@@ -15,25 +15,13 @@ import Memori from './components/Memori.vue';
 import GameBox from './components/GameBox.vue'
 import PogodiInstrument4 from './components/PogodiInstrument4.vue';
 
-
-
-
-
-
-
-
-
-
-
 Vue.registerElement("VideoPlayer", () => require("nativescript-videoplayer").Video);
+
 new Vue({
-  
   render: h => h('frame', [h(PogodiInstrument)])
 }).$start()
 
 export function onLabelLoaded(args) {
   const lbl=args.object as Label;
-  
-    lbl.android.setGravity(17);
-  
+  lbl.android.setGravity(17); 
 }

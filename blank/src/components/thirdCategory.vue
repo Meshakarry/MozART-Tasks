@@ -76,6 +76,12 @@
                         
                     </AbsoluteLayout>
 
+                    <Label class="fas-lock" textWrap="true">
+                        <FormattedString>
+                            <Span text.decode="&#xf023;" fontAttributes="Bold"></Span>
+                        </FormattedString>
+                    </Label>
+
                     <Label class="pola_tekst" text="8" />
                 </AbsoluteLayout>
 
@@ -132,6 +138,14 @@ import Home from '../components/Home'
         top: 23%;
         left: 25%;
         font-size: 30%;
+    }
+    .fas-lock{
+        font-family: Font Awesome 5 Free, fa-solid-900;
+        font-weight: 900;
+        color: black;
+        top: 75%;
+        left: 125%;
+        font-size: 50%;
     }
     .description-label {
         margin-bottom: 15;
