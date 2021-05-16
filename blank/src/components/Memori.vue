@@ -15,24 +15,24 @@
                             </Label>
                             <!-- <Button class="fas" text.decode="&#xf060;" ></Button> -->
             </AbsoluteLayout>
-        
+
 
             <!-- <StackLayout class="memoryOkvir" orientation="horizontal" borderRadius="10" borderColor="grey" borderWidth="1" >  -->
                     <FlexBoxLayout class="memoryList"  >
                         <GridLayout   v-for="card in memoryCards" class="okvir" :class="{'flipped':card.isFlipped,'matched':card.isMatched}" :key="card.id" @tap="turn(card)">
-                            
-                                <Image src="~/images/zutaNova.jpg" class="slika" /> 
+
+                                <Image src="~/images/zutaNova.jpg" class="slika" />
                         <Image v-if="card.isFlipped" class="fliped" stretch="aspectFill"  :src="card.img"/>
-                            
+
                         </GridLayout>
-                    </FlexBoxLayout> 
+                    </FlexBoxLayout>
 
         <Button @tap="reset" class="PonovoPokreni"> Ponovo Pokreni</Button> 
 
         <!-- <Button @tap="reset"> Ponovo Pokreni</Button>  -->
         <!-- <Label text="promjena samo za dinu jer je smotana pa moramo ovako"> </Label> -->
 
-              
+
 
 </StackLayout>
    </Page>
@@ -40,15 +40,16 @@
 </template>
 
 
-<script> 
+<script>
  import _ from 'lodash'
     import { ImagePopup } from 'nativescript-image-popup';
+    import {nizKategorija} from '~/data/kategorije.js'
 
  export default{
      data(){
          return{
-             slice:3,
-              
+             nizKategorija:nizKategorija,
+
              tipkeCards: [
                            {
                                id:0,
@@ -56,7 +57,7 @@
                                img: "~/images/klavir.jpg",
                                isFlipped:false,
                                isMatched:false
-           
+
                            },
                            {
                                id:1,
@@ -66,7 +67,7 @@
                                isFlipped:false,
                                isMatched:false
 
-            
+
                            },
                            {
                                id:2,
@@ -76,9 +77,9 @@
                                isFlipped:false,
                                isMatched:false
 
-           
+
                            },
-                           {  
+                           {
                                id:3,
 
                                name: 'sintisazjer',
@@ -105,7 +106,7 @@
 
                 if(this.flippedCards.length < 2)
                     this.flippedCards.push(card);
-                if(this.flippedCards.length === 2)    
+                if(this.flippedCards.length === 2)
                     this.match(card);
 
            },
@@ -128,27 +129,32 @@
                         this.flippedCards = [];
                     }, 800);
                 }
-                
+
            },
            reset(){
-                    this.tipkeCards.forEach((card) => {
+               
+
+                                
+                const random=Math.floor(Math.random()*this.nizKategorija.length);
+                //  console.log(this.nizKategorija[random]);
+                    this.nizKategorija[random].forEach((card) => {
                     card.isFlipped = false;
                     card.isMatched=false;
                 });
 
-                setTimeout(() => {  
+                setTimeout(() => {
                 this.memoryCards = [];
-                this.memoryCards = _.shuffle(this.memoryCards.concat(_.cloneDeep(this.tipkeCards), _.cloneDeep(this.tipkeCards)));
-               
+                this.memoryCards = _.shuffle(this.memoryCards.concat(_.cloneDeep(this.nizKategorija[random]), _.cloneDeep(this.nizKategorija[random])));
+
                  this.finish = false;
                  this.flippedCards = [];
-                
+
                 }, 600);
-                
+
            }
        }
-            
-       
+
+
      }
 
 
@@ -170,11 +176,11 @@
     }
 
  .okvir{
-     
+
       margin:10;
     height: 300px;
     width: 300px;
-    
+
  }
 
  .memoryList {
@@ -188,7 +194,7 @@
  }
  .memoryList2{
     margin-right:8%;
-    
+
  }
  .fliped{
       height: 300px;
@@ -211,5 +217,5 @@
     margin-top: -1500px;
 
  }
- 
+
 </style>
