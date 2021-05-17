@@ -3,36 +3,45 @@
 
 <StackLayout orientation="vertical" class="glavni">
 
-  <AbsoluteLayout class="btn-back" @tap="open(var1=3)" >
-                            <Label class="back"
-                                style="background-color: blue; height: 60; width: 60; border-radius: 50%; " />
-                            <Label class="back2"
-                                style="background-color: #ffe5d0; height: 45; width: 45; border-radius: 50%; " />
-                            <Label class="fas" textWrap="true">
-                                <FormattedString>
-                                    <Span text.decode="&#xf060;" fontAttributes="Bold"></Span>
-                                </FormattedString>
-                            </Label>
-                            <!-- <Button class="fas" text.decode="&#xf060;" ></Button> -->
-            </AbsoluteLayout>
-        
+    <AbsoluteLayout class="btn">
+                <Label  class="back"
+                    style="background-color: blue; height: 60; width: 60; border-radius: 50%; " />
+                <Label class="back2"
+                    style="background-color: #ffe5d0; height: 45; width: 45; border-radius: 50%; " />
+                <Label class="fas" textWrap="true" @tap="open(var1=3)">
+                    <FormattedString>
+                        <Span text.decode="&#xf060;" fontAttributes="Bold" @tap="$navigateBack"></Span>
+                    </FormattedString>
+                </Label>
+                        <!-- <Button class="fas" text.decode="&#xf060;"  ></Button> -->
+                <Label class="circle-music1"
+                    style="background-color: blue; height: 60; width: 60; border-radius: 50%; " />
+                <Label class="circle-music2"
+                    style="background-color: #ffe5d0; height: 45; width: 45; border-radius: 50%; " />
+                <Label class="fas-volume-on" textWrap="true">
+                    <FormattedString>
+                        <Span text.decode="&#xf028;" fontAttributes="Bold"></Span>
+                    </FormattedString>
+              	</Label>
+    </AbsoluteLayout>
+
 
             <!-- <StackLayout class="memoryOkvir" orientation="horizontal" borderRadius="10" borderColor="grey" borderWidth="1" >  -->
                     <FlexBoxLayout class="memoryList"  >
                         <GridLayout   v-for="card in memoryCards" class="okvir" :class="{'flipped':card.isFlipped,'matched':card.isMatched}" :key="card.id" @tap="turn(card)">
-                            
-                                <Image src="~/images/zutaNova.jpg" class="slika" /> 
+
+                                <Image src="~/images/zutaNova.jpg" class="slika" />
                         <Image v-if="card.isFlipped" class="fliped" stretch="aspectFill"  :src="card.img"/>
-                            
+
                         </GridLayout>
-                    </FlexBoxLayout> 
+                    </FlexBoxLayout>
 
         <Button @tap="reset" class="PonovoPokreni"> Ponovo Pokreni</Button> 
 
         <!-- <Button @tap="reset"> Ponovo Pokreni</Button>  -->
         <!-- <Label text="promjena samo za dinu jer je smotana pa moramo ovako"> </Label> -->
 
-              
+
 
 </StackLayout>
    </Page>
@@ -40,54 +49,15 @@
 </template>
 
 
-<script> 
+<script>
  import _ from 'lodash'
     import { ImagePopup } from 'nativescript-image-popup';
+    import {nizKategorija} from '~/data/kategorije.js'
 
  export default{
      data(){
          return{
-             slice:3,
-              
-             tipkeCards: [
-                           {
-                               id:0,
-                               name: 'klavir',
-                               img: "~/images/klavir.jpg",
-                               isFlipped:false,
-                               isMatched:false
-           
-                           },
-                           {
-                               id:1,
-
-                               name: 'harmonika',
-                               img: "~/images/harmonika.jpg",
-                               isFlipped:false,
-                               isMatched:false
-
-            
-                           },
-                           {
-                               id:2,
-
-                               name: 'cembalo',
-                               img: "~/images/cembalo.jpg",
-                               isFlipped:false,
-                               isMatched:false
-
-           
-                           },
-                           {  
-                               id:3,
-
-                               name: 'sintisazjer',
-                               img: "~/images/sintisajzer.jpg",
-                               isFlipped:false,
-                               isMatched:false
-
-                           }
-            ],
+             nizKategorija:nizKategorija,
             memoryCards:[],
             flippedCards:[],
             finish:false,
@@ -105,7 +75,7 @@
 
                 if(this.flippedCards.length < 2)
                     this.flippedCards.push(card);
-                if(this.flippedCards.length === 2)    
+                if(this.flippedCards.length === 2)
                     this.match(card);
 
            },
@@ -128,27 +98,32 @@
                         this.flippedCards = [];
                     }, 800);
                 }
-                
+
            },
            reset(){
-                    this.tipkeCards.forEach((card) => {
+               
+
+                                
+                const random=Math.floor(Math.random()*this.nizKategorija.length);
+                //  console.log(this.nizKategorija[random]);
+                    this.nizKategorija[random].forEach((card) => {
                     card.isFlipped = false;
                     card.isMatched=false;
                 });
 
-                setTimeout(() => {  
+                setTimeout(() => {
                 this.memoryCards = [];
-                this.memoryCards = _.shuffle(this.memoryCards.concat(_.cloneDeep(this.tipkeCards), _.cloneDeep(this.tipkeCards)));
-               
+                this.memoryCards = _.shuffle(this.memoryCards.concat(_.cloneDeep(this.nizKategorija[random]), _.cloneDeep(this.nizKategorija[random])));
+
                  this.finish = false;
                  this.flippedCards = [];
-                
+
                 }, 600);
-                
+
            }
        }
-            
-       
+
+
      }
 
 
@@ -170,11 +145,11 @@
     }
 
  .okvir{
-     
+
       margin:10;
     height: 300px;
     width: 300px;
-    
+
  }
 
  .memoryList {
@@ -188,7 +163,7 @@
  }
  .memoryList2{
     margin-right:8%;
-    
+
  }
  .fliped{
       height: 300px;
@@ -211,5 +186,5 @@
     margin-top: -1500px;
 
  }
- 
+
 </style>

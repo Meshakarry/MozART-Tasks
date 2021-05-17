@@ -6,16 +6,27 @@
         <ScrollView orientation="vertical">
 
             <StackLayout orientation="vertical" class="glavni">
-                <AbsoluteLayout  @tap="open(var1=1)">
-                    <Label class="back"
+
+                <AbsoluteLayout class="btn">
+                    <Label  class="back"
                         style="background-color: blue; height: 60; width: 60; border-radius: 50%; " />
                     <Label class="back2"
                         style="background-color: #ffe5d0; height: 45; width: 45; border-radius: 50%; " />
-                        <Label class="fas" textWrap="true">
-                                <FormattedString>
-                                    <Span text.decode="&#xf060;" fontAttributes="Bold"></Span>
-                                </FormattedString>
-                            </Label>
+                    <Label class="fas" textWrap="true" @tap="open(var1=1)">
+                        <FormattedString>
+                            <Span text.decode="&#xf060;" fontAttributes="Bold"></Span>
+                        </FormattedString>
+                    </Label>
+                            <!-- <Button class="fas" text.decode="&#xf060;"  ></Button> -->
+                    <Label class="circle-music1"
+                        style="background-color: blue; height: 60; width: 60; border-radius: 50%; " />
+                    <Label class="circle-music2"
+                        style="background-color: #ffe5d0; height: 45; width: 45; border-radius: 50%; " />
+                    <Label class="fas-volume-on" textWrap="true">
+                        <FormattedString>
+                            <Span text.decode="&#xf028;" fontAttributes="Bold"></Span>
+                        </FormattedString>
+                    </Label>
                 </AbsoluteLayout>
 
                 <AbsoluteLayout class="first" width="300" height="180"
@@ -76,6 +87,12 @@
                         
                     </AbsoluteLayout>
 
+                    <Label class="fas-lock" textWrap="true">
+                        <FormattedString>
+                            <Span text.decode="&#xf023;" fontAttributes="Bold"></Span>
+                        </FormattedString>
+                    </Label>
+
                     <Label class="pola_tekst" text="8" />
                 </AbsoluteLayout>
 
@@ -132,6 +149,14 @@ import Home from '../components/Home'
         top: 23%;
         left: 25%;
         font-size: 30%;
+    }
+    .fas-lock{
+        font-family: Font Awesome 5 Free, fa-solid-900;
+        font-weight: 900;
+        color: black;
+        top: 75%;
+        left: 125%;
+        font-size: 50%;
     }
     .description-label {
         margin-bottom: 15;

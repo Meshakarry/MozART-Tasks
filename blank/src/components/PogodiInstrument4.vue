@@ -3,17 +3,26 @@
     <ScrollView>
         <AbsoluteLayout orientation="vertical" class="glavni">
 
-           <AbsoluteLayout class="btn-back" >
-                            <Label class="back"
-                                style="background-color: blue; height: 60; width: 60; border-radius: 50%; " />
-                            <Label class="back2"
-                                style="background-color: #ffe5d0; height: 45; width: 45; border-radius: 50%; " />
-                            <Label class="fas" textWrap="true">
-                                <FormattedString>
-                                    <Span text.decode="&#xf060;" fontAttributes="Bold"></Span>
-                                </FormattedString>
-                            </Label>
-                            <!-- <Button class="fas" text.decode="&#xf060;" ></Button> -->
+           <AbsoluteLayout class="btn">
+                <Label  class="back"
+                    style="background-color: blue; height: 60; width: 60; border-radius: 50%; " />
+                <Label class="back2"
+                    style="background-color: #ffe5d0; height: 45; width: 45; border-radius: 50%; " />
+                <Label class="fas" textWrap="true">
+                    <FormattedString>
+                        <Span text.decode="&#xf060;" fontAttributes="Bold"></Span>
+                    </FormattedString>
+                </Label>
+                        <!-- <Button class="fas" text.decode="&#xf060;"  ></Button> -->
+                <Label class="circle-music1"
+                    style="background-color: blue; height: 60; width: 60; border-radius: 50%; " />
+                <Label class="circle-music2"
+                    style="background-color: #ffe5d0; height: 45; width: 45; border-radius: 50%; " />
+                <Label class="fas-volume-on" textWrap="true">
+                    <FormattedString>
+                        <Span text.decode="&#xf028;" fontAttributes="Bold"></Span>
+                    </FormattedString>
+              	</Label>
             </AbsoluteLayout>
 
 
@@ -22,7 +31,17 @@
 </AbsoluteLayout>
 <AbsoluteLayout class="PrviOkvir">
 
-<AbsoluteLayout class="DrugiOkvir"></AbsoluteLayout>
+<AbsoluteLayout class="DrugiOkvir">
+     <Label top="60" textWrap="true" class="ukupno" textAlignment="center" left="20">
+     <FormattedString >
+     <span text="Osvojili ste ukupnoo" class="txt"/>
+     <span fontWeight="bold" class="txt"> {{bodovi}} </span>
+     <span text="bodova" class="txt" />
+
+     </FormattedString>
+     </Label>
+    <!-- <Label>{{bodovi}}</Label> -->
+</AbsoluteLayout>
 </AbsoluteLayout>
 
          
@@ -37,11 +56,7 @@
 
 
 export default {
-    computed: {
-      message() {
-        return "Blank {N}-Vue app";
-      }
-    },
+     props:["bodovi"],
     data(){
     return{
        porukaNePrikazuj : '',
@@ -50,7 +65,8 @@ export default {
          porukaNePrikazuj1 : '',
         porukaPrikazi1: "        1.  Napisite u svoje kajdanke 10 cijelih nota d1",
         var2:2,
-        zatvori:false
+        zatvori:false,
+        
 
     }},
     methods:{
@@ -128,5 +144,15 @@ export default {
         margin-top: 50px;
         font-weight: bold;
 
+    }
+    .ukupno{
+        text-align: center;
+        line-height: 2rem;
+
+    }
+    .txt{
+        line-height: 5rem;
+        letter-spacing: 1rem;
+        /* color:gold; */
     }
 </style>
