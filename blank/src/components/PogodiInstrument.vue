@@ -22,7 +22,7 @@
 
 <AbsoluteLayout class="prviOkvir">
      <!-- <Button></Button>     -->
-     <Button  @tap="onTap" ></Button>    
+     <Button  @tap="onTapTacna" ref="tacna" ></Button>    
 
 </AbsoluteLayout>
 
@@ -36,7 +36,7 @@
    
 </AbsoluteLayout>
 
-   <GridLayout v-if="porukaNePrikazuj" class="TacanOdgovorSlika" textWrap="true"  textAlignment="center">
+   <GridLayout  v-if="tacna" class="TacanOdgovorSlika" textWrap="true"  textAlignment="center">
              <StackLayout>
               <Image  src="~/images/tacanOdgovor1.jpg" ></Image>
                </StackLayout>
@@ -56,10 +56,13 @@
 
 
 
-<Button class="PokreniPonovo" text="Pokreni ponovo" @tap="open(var1=1)"></Button>
-<Button class="PokreniNarednu" text="Pokreni narednu" @tap="open(var1=2)"></Button>
+<Button class="PokreniPonovo" text="Pokreni ponovo" @tap="reset()"></Button>
+<Button :class="[ isDisabled?'disabled':'PokreniNarednu']"  text="Pokreni narednu" @tap="open(var1=2)" ></Button>
+ <AbsoluteLayout>
+   <Label class="labelBod" left="240" top="20">Bodovi :</Label>
+   <TextField class="inputBod" left="310" top="20" :text="bodovi"  borderRadius="10" borderColor="orange" borderWidth="2" />
 
-
+ </AbsoluteLayout>
          
 
         </AbsoluteLayout>
@@ -72,41 +75,70 @@
 
 
 export default {
-    computed: {
-      message() {
-        return "Blank {N}-Vue app";
-      }
+    mounted() {
+      
+    //   this.reset();
+    this.isDisabled=true;
     },
     data(){
     return{
        porukaNePrikazuj : '',
         porukaPrikazi: "        1.  Napisite u svoje kajdanke 10 cijelih nota d1",
        var1:1,
-         porukaNePrikazuj1 : '',
-        porukaPrikazi1: "        1.  Napisite u svoje kajdanke 10 cijelih nota d1",
         var2:2,
-        zatvori:false
+        isDisabled:false,
+        zatvori:false,
+        bodovi:0,
+        tacna:false,
 
     }},
     methods:{
           onTap(){
             if(this.porukaNePrikazuj === ''){
-                // console.log("Prikazi nesto")
+                this.isDisabled=false;
                 this.porukaNePrikazuj=this.porukaPrikazi
-                this.porukaNePrikazuj1='';
-
+                this.tacna=true;
+                
+                // this.netacna=true;
+              
             }
-             
+           
+        
           },
+           onTapTacna(){
+                   if( this.$refs.tacna){
+                       this.tacna=true;
+                      this.bodovi+=10;
+
+                   }
+                this.porukaNePrikazuj=this.porukaPrikazi
+                  this.isDisabled=false;
+
+
+            
+            },
           open(var1){
                 
-                if(var1===1){
-                    this.$navigateTo(PogodiInstrument);
-                }else if(var1==2) {
-                    this.$navigateTo(PogodiInstrument2);
+                 if(var1==2 && this.porukaNePrikazuj!=='' ) {
+                    this.$navigateTo(PogodiInstrument2,{
+                     props:{
+                         bodovi:this.bodovi
+                     }
+                    
+                    
+                    });
                 
                 }
-          }
+          },
+          reset(){
+              this.porukaNePrikazuj='';
+            this.tacna=false;
+            this.bodovi=0;
+              this.isDisabled=true;
+          },
+        
+          
+          
     }
 }  
 
@@ -229,4 +261,23 @@ Image{
     margin-left: 700px;
     color: white;
 }
+  .disabled{
+      opacity: 0.9; 
+     width: 200px;
+    height: 200px;
+    border-radius: 100%;
+    margin-top: 1300px;
+    margin-left: 700px;
+    color: black;
+
+ }
+ .labelBod{
+  color:orange;
+  font-size: 23;
+ }
+ .inputBod{
+  width:50;
+  /* padding: 5; */
+  text-align: center;
+ }
 </style>
