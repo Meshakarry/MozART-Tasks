@@ -61,7 +61,7 @@
     1. U nastavku će vam biti određen tonalitet
        i glazbena mjera kompozicije.
                 
-   2.Preslušajte ponuđenu kadencu, pređite na 
+   2.Preslušajte kadencu, pređite na 
      preslušavanje fraza i zapisivanje jednoglasnog 
      diktata.
                 
@@ -83,6 +83,8 @@
 import DictatsCompositions from '../components/DictatsCompositions'
 import Home from '../components/Home'
 import Diktati from '../components/Diktati'
+import AnalSlusanjeTrozvuka from '../components/AnalSlusanjeTrozvuka'
+
 
 
 
@@ -123,9 +125,9 @@ methods:{
            open(var1){
                 
                 if(var1===1){
-                    this.$navigateTo(DictatsCompositions);
+                    this.$navigateTo(AnalSlusanjeTrozvuka);
                 }else if(var1==2) {
-                    this.$navigateTo(DictatsCompositions);
+                    this.$navigateTo(AnalSlusanjeTrozvuka);
                 
                 }
                 else if(var1==3) {
