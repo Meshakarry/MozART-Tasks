@@ -117,6 +117,7 @@ export default {
 
                    }
                 this.porukaNePrikazuj=this.porukaPrikazi
+                this.isDisabled=false;
 
 
             

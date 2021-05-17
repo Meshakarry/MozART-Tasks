@@ -22,7 +22,17 @@
 </AbsoluteLayout>
 <AbsoluteLayout class="PrviOkvir">
 
-<AbsoluteLayout class="DrugiOkvir"></AbsoluteLayout>
+<AbsoluteLayout class="DrugiOkvir">
+     <Label top="60" textWrap="true" class="ukupno" textAlignment="center" left="20">
+     <FormattedString >
+     <span text="Osvojili ste ukupnoo" class="txt"/>
+     <span fontWeight="bold" class="txt"> {{bodovi}} </span>
+     <span text="bodova" class="txt" />
+
+     </FormattedString>
+     </Label>
+    <!-- <Label>{{bodovi}}</Label> -->
+</AbsoluteLayout>
 </AbsoluteLayout>
 
          
@@ -37,11 +47,7 @@
 
 
 export default {
-    computed: {
-      message() {
-        return "Blank {N}-Vue app";
-      }
-    },
+     props:["bodovi"],
     data(){
     return{
        porukaNePrikazuj : '',
@@ -50,7 +56,8 @@ export default {
          porukaNePrikazuj1 : '',
         porukaPrikazi1: "        1.  Napisite u svoje kajdanke 10 cijelih nota d1",
         var2:2,
-        zatvori:false
+        zatvori:false,
+        
 
     }},
     methods:{
@@ -128,5 +135,15 @@ export default {
         margin-top: 50px;
         font-weight: bold;
 
+    }
+    .ukupno{
+        text-align: center;
+        line-height: 2rem;
+
+    }
+    .txt{
+        line-height: 5rem;
+        letter-spacing: 1rem;
+        /* color:gold; */
     }
 </style>

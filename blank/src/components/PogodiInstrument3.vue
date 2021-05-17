@@ -22,21 +22,22 @@
 
 <AbsoluteLayout class="prviOkvir">
      <!-- <Button></Button>     -->
-     <Button  @tap="onTap" ></Button>    
+          <Button @tap="onTap" ></Button>    
 
 </AbsoluteLayout>
 
 <AbsoluteLayout class="drugiOkvir">
-          <Button  @tap="onTap" ></Button>    
+     <Button @tap="onTap"   ></Button>    
    
 </AbsoluteLayout>
 
 <AbsoluteLayout class="treciOkvir">
-          <Button  @tap="onTap" ></Button>    
+          <Button @tap="onTapTacna" ref="tacna" ></Button>    
    
 </AbsoluteLayout>
 
-   <GridLayout v-if="porukaNePrikazuj" class="TacanOdgovorSlika" textWrap="true"  textAlignment="center">
+
+ <GridLayout v-if="porukaNePrikazuj" class="TacanOdgovorSlika" textWrap="true"  textAlignment="center">
              <StackLayout>
               <Image  src="~/images/netacanOdgovor.jpg" ></Image>
                </StackLayout>
@@ -48,7 +49,7 @@
                </StackLayout>
         </GridLayout>
 
-         <GridLayout v-if="porukaNePrikazuj" class="NETacanOdgovorSlika2" textWrap="true"  textAlignment="center">
+         <GridLayout v-if="tacna" class="NETacanOdgovorSlika2" textWrap="true"  textAlignment="center">
              <StackLayout>
               <Image src="~/images/tacanOdgovor1.jpg" ></Image>
                </StackLayout>
@@ -56,10 +57,13 @@
 
 
 
-<Button class="PokreniPonovo" text="Pokreni ponovo" @tap="open(var1=1)"></Button>
-<Button class="PokreniNarednu" text="Vidi rezultat" @tap="open(var1=2)"></Button>
+<Button class="PokreniPonovo" text="Pokreni ponovo" @tap="reset()"></Button>
+<Button :class="[ isDisabled?'disabled':'PokreniNarednu']"  text="Pokreni narednu" @tap="open(var1=2)" ></Button>
+ <AbsoluteLayout>
+   <Label class="labelBod" left="240" top="20">Bodovi :</Label>
+   <TextField class="inputBod" left="310" top="20" :text="bodovi"  borderRadius="10" borderColor="orange" borderWidth="2" />
 
-
+ </AbsoluteLayout>
          
 
         </AbsoluteLayout>
@@ -67,49 +71,109 @@
 </Page>
 </template>
 <script>
-  import PogodiInstrument2 from '../components/PogodiInstrument2'
-  import PogodiInstrument3 from '../components/PogodiInstrument3'
+  import PogodiInstrument from '../components/PogodiInstrument'
   import PogodiInstrument4 from '../components/PogodiInstrument4'
 
 
-
 export default {
-    computed: {
-      message() {
-        return "Blank {N}-Vue app";
-      }
-    },
+    props:["bodovi"],
     data(){
-    return{
-       porukaNePrikazuj : '',
+        return{
+            porukaNePrikazuj : '',
         porukaPrikazi: "        1.  Napisite u svoje kajdanke 10 cijelih nota d1",
        var1:1,
-         porukaNePrikazuj1 : '',
-        porukaPrikazi1: "        1.  Napisite u svoje kajdanke 10 cijelih nota d1",
         var2:2,
-        zatvori:false
+        isDisabled:false,
+        zatvori:false,
+        isLoadedZero:true,
+        tacna:false,
+        isLoadedTen:false
 
     }},
+        mounted() {
+          
+        this.isDisabled=true;
+        if(this.bodovi!=0 ){
+         this.isLoadedZero=false;
+         this.isLoadedTen=true;
+        }
+        else if(this.bodovi==10){
+         isLoadedTen=true;
+        }
+        },
     methods:{
           onTap(){
             if(this.porukaNePrikazuj === ''){
-                // console.log("Prikazi nesto")
+                this.isDisabled=false;
                 this.porukaNePrikazuj=this.porukaPrikazi
-                this.porukaNePrikazuj1='';
-
+                this.tacna=true;
+                
+                // this.netacna=true;
+              
             }
-             
+           
+        
           },
+           onTapTacna(){
+                   if( this.$refs.tacna){
+                       this.tacna=true;
+                       this.bodovi+=10;
+
+                   }
+                this.porukaNePrikazuj=this.porukaPrikazi
+                this.isDisabled=false;
+
+
+
+            
+            },
           open(var1){
                 
-                if(var1===1){
-                    this.$navigateTo(PogodiInstrument3);
-                }
-                else if(var1==2) {
-                    this.$navigateTo(PogodiInstrument4);
+                 if(var1==2 && this.porukaNePrikazuj!=='' ) {
+                    this.$navigateTo(PogodiInstrument4,{
+                     props:{
+                         bodovi:this.bodovi
+                     }
+                    
+                    
+                    });
                 
                 }
-          }
+          },
+          reset(){
+              this.porukaNePrikazuj='';
+            this.tacna=false;
+
+              switch(this.bodovi){
+                  case 30:
+                      this.bodovi=20;
+                  break;
+                  case 20:
+                    if(this.isLoadedTen){
+                        this.bodovi=10;
+                    }
+                    else{
+                    this.bodovi=20;
+                    }
+                break;
+                  case 10:
+             if(!this.isLoadedZero && this.isLoadedTen){
+                this.bodovi=10;
+             }
+             else {
+               this.bodovi=0;
+             }
+                 break;
+
+              }
+                //  case this.isLoadedZero:
+                     
+                //      this.bodovi=0;
+              this.isDisabled=true;
+          },
+        
+          
+          
     }
 }  
 
@@ -132,7 +196,7 @@ export default {
         font-size: 30%;
     }
     .ZaVideo{
-        background-image: url("~/images/punoNota.png");
+         background-image: url("~/images/punoNota.png");
         background-size: cover;
         background-position: center;
         background-color: black;
@@ -186,7 +250,7 @@ export default {
         background-position: center;
     }
 .TacanOdgovorSlika{
-  height: 150px;
+        height: 150px;
         width: 150px;
         margin-top: 650px;
         margin-left: 10%;
@@ -232,4 +296,23 @@ Image{
     margin-left: 700px;
     color: white;
 }
+  .disabled{
+      opacity: 0.9; 
+     width: 200px;
+    height: 200px;
+    border-radius: 100%;
+    margin-top: 1300px;
+    margin-left: 700px;
+    color: black;
+
+ }
+ .labelBod{
+  color:orange;
+  font-size: 23;
+ }
+ .inputBod{
+  width:50;
+  /* padding: 5; */
+  text-align: center;
+ }
 </style>
