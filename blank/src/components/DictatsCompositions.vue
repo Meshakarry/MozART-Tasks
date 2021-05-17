@@ -3,19 +3,28 @@
 <ScrollView>
 <StackLayout orientation="vertical" class="glavni">
 
-   <AbsoluteLayout class="btn-back" @tap="open(var1=1)" >
-                            <Label class="back"
-                                style="background-color: blue; height: 60; width: 60; border-radius: 50%; " />
-                            <Label class="back2"
-                                style="background-color: #ffe5d0; height: 45; width: 45; border-radius: 50%; " />
-                            <Label class="fas" textWrap="true">
-                                <FormattedString>
-                                    <Span text.decode="&#xf060;" fontAttributes="Bold"></Span>
-                                </FormattedString>
-                            </Label>
-                            <!-- <Button class="fas" text.decode="&#xf060;" ></Button> -->
-            </AbsoluteLayout>
-
+  <AbsoluteLayout class="btn">
+                <Label  class="back"
+                    style="background-color: blue; height: 60; width: 60; border-radius: 50%; " />
+                <Label class="back2"
+                    style="background-color: #ffe5d0; height: 45; width: 45; border-radius: 50%; " />
+                <Label class="fas" textWrap="true" @tap="open(var1=1)">
+                    <FormattedString>
+                        <Span text.decode="&#xf060;" fontAttributes="Bold"></Span>
+                    </FormattedString>
+                </Label>
+                        <!-- <Button class="fas" text.decode="&#xf060;"  ></Button> -->
+                <Label class="circle-music1"
+                    style="background-color: blue; height: 60; width: 60; border-radius: 50%; " />
+                <Label class="circle-music2"
+                    style="background-color: #ffe5d0; height: 45; width: 45; border-radius: 50%; " />
+                <Label class="fas-volume-on" textWrap="true">
+                    <FormattedString>
+                        <Span text.decode="&#xf028;" fontAttributes="Bold"></Span>
+                    </FormattedString>
+              	</Label>
+  </AbsoluteLayout>
+  
              <StackLayout >
 
             <!-- <VideoPlayer id="nativeVideoPlayer"

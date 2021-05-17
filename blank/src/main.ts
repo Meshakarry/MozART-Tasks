@@ -4,11 +4,8 @@ import Home from './components/Home.vue'
 import { Label } from 'tns-core-modules/ui/label';
 import { isAndroid } from 'tns-core-modules/platform';
 import DictatsCompositions from './components/DictatsCompositions.vue'; 
-import Memory from './components/Memory.vue';
-import MemoryButtons from './components/MemoryButtons.vue';
 import Diktati from './components/Diktati.vue';
 import thirdCategory from './components/thirdCategory.vue';
-import MemoryCategories from './components/MemoryCategories.vue';
 import Puzzle from './components/Puzzle.vue';
 import PogodiInstrument from './components/PogodiInstrument.vue';
 import Memori from './components/Memori.vue';
@@ -20,8 +17,3 @@ Vue.registerElement("VideoPlayer", () => require("nativescript-videoplayer").Vid
 new Vue({
   render: h => h('frame', [h(PogodiInstrument)])
 }).$start()
-
-export function onLabelLoaded(args) {
-  const lbl=args.object as Label;
-  lbl.android.setGravity(17); 
-}
