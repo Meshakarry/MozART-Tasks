@@ -22,13 +22,14 @@
                         style="background-color: blue; height: 60; width: 60; border-radius: 50%; " />
                     <Label class="circle-music2"
                         style="background-color: #ffe5d0; height: 45; width: 45; border-radius: 50%; " />
-                    <Label class="fas-volume-on" textWrap="true" @tap=promjeni>
+                    <Label class="fas-volume-on" textWrap="true" @tap="promjeni">
                         <FormattedString>
                             <Span v-if="!clicked" text.decode="&#xf028;"  fontAttributes="Bold" ref="ton"></Span>
                             <Span v-if="clicked" text.decode="&#xf6a9;"  fontAttributes="Bold" ></Span>
 
                         </FormattedString>
                     </Label>
+                    <!-- <MusicButton :clicked="false"/> -->
                 </AbsoluteLayout>
 
                 <AbsoluteLayout class="first" width="300" height="180"
@@ -114,21 +115,75 @@
 
 <script>
 import Home from '../components/Home'
-
+const { isIOS } = require('tns-core-modules/platform');
+const { TNSPlayer } = require('nativescript-audio');
+import MusicButton from '../components/MusicButton'
+// import MusicButton from './MusicButton.vue';
     export default {
         data() {
             return {
                 textFieldValue: "",
-                clicked:false
+                clicked:false,
+                isPlaying: false,
+
+                
             };
         },
+       components: {MusicButton },
+
+       
+        created(){
+            this._player = new TNSPlayer();
+
+            const playerOptions = {
+            //   audioFile: "https://www.w3schools.com/html/horse.mp3",
+            audioFile: "~/audio/Beethoven.mp3",
+            loop: true,
+            autoplay: false,
+            
+            };
+
+            this._player
+            .initFromUrl(playerOptions)
+            .then((res) => {
+                // console.log(res);
+                this._player.play();
+            })
+            .catch((err) => {
+                console.log("something went wrong...", err);
+            });
+
+            this._checkInterval = setInterval(() => {
+            this._player.getAudioTrackDuration().then(duration => {
+                // iOS: duration is in seconds
+                // Android: duration is in milliseconds
+                let current = this._player.currentTime
+                if (isIOS) {
+                duration *= 1000
+                current *= 1000
+                }
+
+                this.progress = Math.ceil(current / duration * 100);
+
+                this.isPlaying = this._player.isAudioPlaying();
+                // this.playPause();
+
+            });
+            }, 200)
+
+        },
+                destroyed() {
+            clearInterval(this._checkInterval)
+        },
         methods: {
-            onItemTap: function(args) {
-                console.log("Item with index: " + args.index + " tapped");
-            },
-            onButtonTap() {
-                console.log("Button was pressed");
-            },
+        //         playPause() {
+        // if (this._player.isAudioPlaying()) {
+        //     this._player.pause();
+        // } else {
+        //     this._player.play();
+        // }
+        // },
+          
         open(var1){
                 
                 if(var1===1){
@@ -137,14 +192,25 @@ import Home from '../components/Home'
                 
     
         },
+         pokreniOdmah(){
+            this._player.play();
+        },
         promjeni(){
             if(this.$refs.ton){
                 this.clicked=true;
-
-            }
-            else{
+             if (this._player.isAudioPlaying()){
+                 this._player.pause();
+             }
+             }
+             else{
+            this._player.play();
                 this.clicked=false;
-            }
+
+             
+             }
+            
+            
+               
         }
     }}
 </script>
