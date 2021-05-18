@@ -22,9 +22,11 @@
                         style="background-color: blue; height: 60; width: 60; border-radius: 50%; " />
                     <Label class="circle-music2"
                         style="background-color: #ffe5d0; height: 45; width: 45; border-radius: 50%; " />
-                    <Label class="fas-volume-on" textWrap="true">
+                    <Label class="fas-volume-on" textWrap="true" @tap=promjeni>
                         <FormattedString>
-                            <Span text.decode="&#xf028;" fontAttributes="Bold"></Span>
+                            <Span v-if="!clicked" text.decode="&#xf028;"  fontAttributes="Bold" ref="ton"></Span>
+                            <Span v-if="clicked" text.decode="&#xf6a9;"  fontAttributes="Bold" ></Span>
+
                         </FormattedString>
                     </Label>
                 </AbsoluteLayout>
@@ -114,6 +116,12 @@
 import Home from '../components/Home'
 
     export default {
+        data() {
+            return {
+                textFieldValue: "",
+                clicked:false
+            };
+        },
         methods: {
             onItemTap: function(args) {
                 console.log("Item with index: " + args.index + " tapped");
@@ -126,12 +134,17 @@ import Home from '../components/Home'
                 if(var1===1){
                     this.$navigateTo(Home);
                 }
+                
     
         },
-        data() {
-            return {
-                textFieldValue: ""
-            };
+        promjeni(){
+            if(this.$refs.ton){
+                this.clicked=true;
+
+            }
+            else{
+                this.clicked=false;
+            }
         }
     }}
 </script>
