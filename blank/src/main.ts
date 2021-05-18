@@ -14,11 +14,13 @@ import PogodiInstrument from './components/PogodiInstrument.vue';
 import Memori from './components/Memori.vue';
 import GameBox from './components/GameBox.vue'
 import PogodiInstrument4 from './components/PogodiInstrument4.vue';
+import PuzzleCategories from './components/PuzzleCategories.vue';
+
 
 Vue.registerElement("VideoPlayer", () => require("nativescript-videoplayer").Video);
 
 new Vue({
-  render: h => h('frame', [h(PogodiInstrument)])
+  render: h => h('frame', [h(PuzzleCategories)])
 }).$start()
 
 export function onLabelLoaded(args) {
