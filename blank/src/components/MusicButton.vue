@@ -1,6 +1,5 @@
 <template>
-    <Page class="sve" actionBarHidden="true">
-        <ActionBar text="Treca kategorija" />
+   
     <Label class="fas-volume-on" textWrap="true" @tap="promjeni">
                         <FormattedString>
                             <Span v-if="!clicked" text.decode="&#xf028;"  fontAttributes="Bold" ref="ton"></Span>
@@ -10,7 +9,7 @@
                     </Label>
 
 
-    </Page>
+  
 </template>
 <script>
 import Home from '../components/Home'
