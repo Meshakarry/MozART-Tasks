@@ -3,18 +3,27 @@
 <ScrollView>
 <StackLayout orientation="vertical" class="glavni">
 
-  <AbsoluteLayout class="btn-back" @tap="open(var1=3)" >
-                            <Label class="back"
-                                style="background-color: blue; height: 60; width: 60; border-radius: 50%; " />
-                            <Label class="back2"
-                                style="background-color: #ffe5d0; height: 45; width: 45; border-radius: 50%; " />
-                            <Label class="fas" textWrap="true">
-                                <FormattedString>
-                                    <Span text.decode="&#xf060;" fontAttributes="Bold"></Span>
-                                </FormattedString>
-                            </Label>
-                            <!-- <Button class="fas" text.decode="&#xf060;" ></Button> -->
-            </AbsoluteLayout>
+  <AbsoluteLayout class="btn">
+                <Label  class="back"
+                    style="background-color: blue; height: 60; width: 60; border-radius: 50%; " />
+                <Label class="back2"
+                    style="background-color: #ffe5d0; height: 45; width: 45; border-radius: 50%; " />
+                <Label class="fas" textWrap="true" @tap="open(var1=3)">
+                    <FormattedString>
+                        <Span text.decode="&#xf060;" fontAttributes="Bold"></Span>
+                    </FormattedString>
+                </Label>
+                        <!-- <Button class="fas" text.decode="&#xf060;"  ></Button> -->
+                <Label class="circle-music1"
+                    style="background-color: blue; height: 60; width: 60; border-radius: 50%; " />
+                <Label class="circle-music2"
+                    style="background-color: #ffe5d0; height: 45; width: 45; border-radius: 50%; " />
+                <Label class="fas-volume-on" textWrap="true">
+                    <FormattedString>
+                        <Span text.decode="&#xf028;" fontAttributes="Bold"></Span>
+                    </FormattedString>
+              	</Label>
+  </AbsoluteLayout>
 
 <!-- <Label v-if="porukaNePrikazuj"  text="nesto" :key="porukaPrikazi" ></Label> -->
 <!-- <Label v-if="porukaNePrikazuj"  text="nesto" :v-text="porukaPrikazi"></Label> -->
@@ -61,7 +70,7 @@
     1. U nastavku će vam biti određen tonalitet
        i glazbena mjera kompozicije.
                 
-   2.Preslušajte ponuđenu kadencu, pređite na 
+   2.Preslušajte kadencu, pređite na 
      preslušavanje fraza i zapisivanje jednoglasnog 
      diktata.
                 
@@ -83,6 +92,8 @@
 import DictatsCompositions from '../components/DictatsCompositions'
 import Home from '../components/Home'
 import Diktati from '../components/Diktati'
+import AnalSlusanjeTrozvuka from '../components/AnalSlusanjeTrozvuka'
+
 
 
 
@@ -123,9 +134,9 @@ methods:{
            open(var1){
                 
                 if(var1===1){
-                    this.$navigateTo(DictatsCompositions);
+                    this.$navigateTo(AnalSlusanjeTrozvuka);
                 }else if(var1==2) {
-                    this.$navigateTo(DictatsCompositions);
+                    this.$navigateTo(AnalSlusanjeTrozvuka);
                 
                 }
                 else if(var1==3) {

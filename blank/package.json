@@ -11,6 +11,7 @@
     "@vue/devtools": "^5.3.3",
     "lodash": "^4.17.21",
     "nativescript": "^6.4.1",
+    "nativescript-audio": "^6.2.4",
     "nativescript-exoplayer": "^4.0.2",
     "nativescript-image-popup": "^1.0.1",
     "nativescript-socketio": "^3.3.1",
