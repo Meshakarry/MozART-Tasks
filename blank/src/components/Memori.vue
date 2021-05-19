@@ -106,14 +106,14 @@
                                 
                 const random=Math.floor(Math.random()*this.nizKategorija.length);
                 //  console.log(this.nizKategorija[random]);
-                    this.nizKategorija[random].forEach((card) => {
+                    this.nizKategorija[3].forEach((card) => {
                     card.isFlipped = false;
                     card.isMatched=false;
                 });
 
                 setTimeout(() => {
                 this.memoryCards = [];
-                this.memoryCards = _.shuffle(this.memoryCards.concat(_.cloneDeep(this.nizKategorija[random]), _.cloneDeep(this.nizKategorija[random])));
+                this.memoryCards = _.shuffle(this.memoryCards.concat(_.cloneDeep(this.nizKategorija[3]), _.cloneDeep(this.nizKategorija[3])));
 
                  this.finish = false;
                  this.flippedCards = [];
