@@ -34,7 +34,7 @@
                 </GridLayout>
 
                 <GridLayout class="okvir5">
-                <Image src="~/images/puzzleVioline.jpg" class="slika" />
+                <Image src="~/images/puzzleDrums.jpg" class="slika" />
                 </GridLayout> 
 
 </AbsoluteLayout>

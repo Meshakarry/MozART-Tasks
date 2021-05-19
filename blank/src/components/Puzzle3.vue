@@ -33,7 +33,7 @@
                 horizontalAlignment="center"
                 borderRadius="10" borderColor="grey" borderWidth="1"
             >
-                <Image class="glavnaSlika" src="~/images/puzzleVioline.jpg"  verticalAlignment="top" horizontalAlignment="center"/>
+                <Image class="glavnaSlika" src="~/images/puzzleDrums.jpg"  verticalAlignment="top" horizontalAlignment="center"/>
             </GridLayout>
 
             <GridLayout
@@ -112,25 +112,25 @@
             refId: "drag4",
             row: 0,
             col: 0,
-            src: "~/images/Violina4.jpg",
+            src: "~/images/Drums4.jpg",
             },
             {
             refId: "drag1",
             row: 0,
             col: 1,
-            src: "~/images/Violina1.jpg",
+            src: "~/images/Drums1.jpg",
             },
             {
             refId: "drag2",
             row: 1,
             col: 0,
-            src: "~/images/Violina2.jpg",
+            src: "~/images/Drums2.jpg",
             },
             {
             refId: "drag3",
             row: 1,
             col: 1,
-            src: "~/images/Violina3.jpg",
+            src: "~/images/Drums3.jpg",
             },
         ],
         finalArray: [
@@ -138,25 +138,25 @@
             refId: "drag1",
             row: 0,
             col: 1,
-            src: "~/images/Violina1.jpg",
+            src: "~/images/Drums1.jpg",
             },
             {
             refId: "drag2",
             row: 1,
             col: 0,
-            src: "~/images/Violina2.jpg",
+            src: "~/images/Drums2.jpg",
             },
             {
             refId: "drag3",
             row: 1,
             col: 1,
-            src: "~/images/Violina3.jpg",
+            src: "~/images/Drums3.jpg",
             },
             {
             refId: "drag4",
             row: 0,
             col: 0,
-            src: "~/images/Violina4.jpg",
+            src: "~/images/Drums4.jpg",
             },
         ],
         };
@@ -167,7 +167,7 @@
 
             const playerOptions = {
             //   audioFile: "https://www.w3schools.com/html/horse.mp3",
-            audioFile: "~/audio/Violin.mp3",
+            audioFile: "~/audio/Drums.mp3",
             loop: false,
             autoplay: false,
             
@@ -800,7 +800,7 @@
             }
             if (JSON.stringify(this.boxArray) === JSON.stringify(this.finalArray)) {
                 console.log("Correct.");
-                ImagePopup.localImagePopup("~/images/puzzleVioline.jpg");
+                ImagePopup.localImagePopup("~/images/puzzleDrums.jpg");
                 this._player.play();
                 this.right = true;
             }
