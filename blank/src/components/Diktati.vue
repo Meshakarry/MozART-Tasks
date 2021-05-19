@@ -93,6 +93,8 @@ import DictatsCompositions from '../components/DictatsCompositions'
 import Home from '../components/Home'
 import Diktati from '../components/Diktati'
 import AnalSlusanjeTrozvuka from '../components/AnalSlusanjeTrozvuka'
+  import JednoglasniDiktat from '../components/JednoglasniDiktat'
+
 
 
 
@@ -136,7 +138,7 @@ methods:{
                 if(var1===1){
                     this.$navigateTo(AnalSlusanjeTrozvuka);
                 }else if(var1==2) {
-                    this.$navigateTo(AnalSlusanjeTrozvuka);
+                    this.$navigateTo(JednoglasniDiktat);
                 
                 }
                 else if(var1==3) {

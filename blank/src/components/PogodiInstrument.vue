@@ -3,14 +3,14 @@
     <ScrollView>
         <AbsoluteLayout orientation="vertical" class="glavni">
 
-           <AbsoluteLayout class="btn">
+           <AbsoluteLayout class="btn" >
                 <Label  class="back"
-                    style="background-color: blue; height: 60; width: 60; border-radius: 50%; " />
+                    style="background-color: blue; height: 60; width: 60; border-radius: 50%; " @tap="open(var1=1)" />
                 <Label class="back2"
                     style="background-color: #ffe5d0; height: 45; width: 45; border-radius: 50%; " />
                 <Label class="fas" textWrap="true">
                     <FormattedString>
-                        <Span text.decode="&#xf060;" fontAttributes="Bold"></Span>
+                        <Span text.decode="&#xf060;" fontAttributes="Bold" ></Span>
                     </FormattedString>
                 </Label>
                         <!-- <Button class="fas" text.decode="&#xf060;"  ></Button> -->
@@ -68,7 +68,7 @@
 <Button :class="[ isDisabled?'disabled':'PokreniNarednu']"  text="Pokreni narednu" @tap="open(var1=2)" ></Button>
  <AbsoluteLayout>
    <Label class="labelBod" left="240" top="20">Bodovi :</Label>
-   <TextField class="inputBod" left="310" top="20" :text="bodovi"  borderRadius="10" borderColor="orange" borderWidth="2" />
+   <TextField class="inputBod" left="310" top="20" :text="bodovi" editable="false"  borderRadius="10" borderColor="orange" borderWidth="2" />
 
  </AbsoluteLayout>
          
@@ -80,6 +80,7 @@
 <script>
   import PogodiInstrument from '../components/PogodiInstrument'
   import PogodiInstrument2 from '../components/PogodiInstrument2'
+  import GameBox from '../components/GameBox'
 
 
 export default {
@@ -101,6 +102,7 @@ export default {
 
     }},
     methods:{
+        
           onTap(){
             if(this.porukaNePrikazuj === ''){
                 this.isDisabled=false;
@@ -136,6 +138,11 @@ export default {
                     
                     });
                 
+                }
+                else if(var1==1)
+                {
+                    this.$navigateTo(GameBox)
+
                 }
           },
           reset(){

@@ -3,32 +3,32 @@
     <ScrollView>
         <AbsoluteLayout orientation="vertical" class="glavni">
 
-           <AbsoluteLayout class="btn"  >
+           <AbsoluteLayout class="btn"  @tap="open(var1=1)">
                 <Label  class="back"
-                    style="background-color: blue; height: 60; width: 60; border-radius: 50%; " @tap="open(var1=1)" />
+                    style="background-color: #FA8C54; height: 60; width: 60; border-radius: 50%; " />
                 <Label class="back2"
                     style="background-color: #ffe5d0; height: 45; width: 45; border-radius: 50%; " />
                 <Label class="fas" textWrap="true">
                     <FormattedString>
-                        <Span text.decode="&#xf060;" fontAttributes="Bold"></Span>
+                        <Span text.decode="&#xf015;" fontAttributes="Bold"></Span>
                     </FormattedString>
                 </Label>
                         <!-- <Button class="fas" text.decode="&#xf060;"  ></Button> -->
-                <Label class="circle-music1"
-                    style="background-color: blue; height: 60; width: 60; border-radius: 50%; " />
+                <!-- <Label class="circle-music1"
+                    style="background-color: #FA8C54; height: 60; width: 60; border-radius: 50%; " />
                 <Label class="circle-music2"
                     style="background-color: #ffe5d0; height: 45; width: 45; border-radius: 50%; " />
                 <Label class="fas-volume-on" textWrap="true">
                     <FormattedString>
                         <Span text.decode="&#xf028;" fontAttributes="Bold"></Span>
                     </FormattedString>
-              	</Label>
+              	</Label> -->
 
 
 
             </AbsoluteLayout>
-             <Label class="home1"
-                    style="background-color: blue; height: 60; width: 60; border-radius: 50%; "  @tap="open(var1=3)" />
+             <!-- <Label class="home1"
+                    style="background-color: #FA8C54; height: 60; width: 60; border-radius: 50%; "  @tap="open(var1=3)" />
                 <Label class="home2"
                     style="background-color: #ffe5d0; height: 45; width: 45; border-radius: 50%; " />
                 <Label class="fas-home" textWrap="true">
@@ -39,7 +39,7 @@
                   <Label class="VratiSe" text="Vrati se na početak"></Label>
 
                 <Label class="replay1"
-                    style="background-color: blue; height: 60; width: 60; border-radius: 50%; " @tap="open(var1=4)"/>
+                    style="background-color: #FA8C54; height: 60; width: 60; border-radius: 50%; " @tap="open(var1=4)"/>
                 <Label class="replay2"
                     style="background-color: #ffe5d0; height: 45; width: 45; border-radius: 50%; " />
                 <Label class="fas-replay" textWrap="true">
@@ -47,24 +47,56 @@
                         <Span text.decode="&#xf122;" fontAttributes="Bold"></Span>
                     </FormattedString>
               	</Label>  
-                  <Label class="IgrajPonovo" text="Igraj ponovo"></Label>
+                  <Label class="IgrajPonovo" text="Igraj ponovo"></Label> -->
 
 
-<AbsoluteLayout class="TreciOkvir" >
+<!-- <AbsoluteLayout class="TreciOkvir" >
     <Label class="tekst" text="Vaš rezultat !!"></Label>
-</AbsoluteLayout>
+</AbsoluteLayout> -->
 <AbsoluteLayout class="PrviOkvir">
 
 <AbsoluteLayout class="DrugiOkvir">
-     <Label top="60" textWrap="true" class="ukupno" textAlignment="center" left="20">
-     <FormattedString >
-     <span text="Osvojili ste ukupno " class="txt1"/>
-     <span  class="txt2"> {{bodovi}} </span>
-     <span text=" bodova" class="txt3" />
+    
+  <AbsoluteLayout class="prviOkvirDiktat">
+     <!-- <Button></Button>     -->
+     <Button class="Button"  @tap="onTap" ></Button>
 
-     </FormattedString>
-     </Label>
-    <!-- <Label>{{bodovi}}</Label> -->
+</AbsoluteLayout>
+
+ <AbsoluteLayout class="drugiOkvirDiktat">
+     <!-- <Button></Button>     -->
+     <Button class="Button"  @tap="onTap" ></Button>
+
+</AbsoluteLayout>
+
+<AbsoluteLayout class="treciOkvirDiktat">
+     <!-- <Button></Button>     -->
+     <Button class="Button"  @tap="onTap" ></Button>
+
+</AbsoluteLayout>
+
+
+<GridLayout v-if="porukaNePrikazuj" class="TacanOdgovorSlika" textWrap="true"  textAlignment="center">
+             <StackLayout>
+              <Image  src="~/images/netacanOdgovor.jpg" ></Image>
+               </StackLayout>
+        </GridLayout>
+
+<GridLayout v-if="porukaNePrikazuj" class="NETacanOdgovorSlika1"  textWrap="true"  textAlignment="center">
+             <StackLayout>
+              <Image src="~/images/tacanOdgovor1.jpg" ></Image>
+               </StackLayout>
+        </GridLayout>
+
+         <GridLayout v-if="porukaNePrikazuj" class="NETacanOdgovorSlika2" textWrap="true"  textAlignment="center">
+             <StackLayout>
+              <Image src="~/images/netacanOdgovor.jpg" ></Image>
+               </StackLayout>
+        </GridLayout>
+
+
+
+
 </AbsoluteLayout>
 </AbsoluteLayout>
 
@@ -78,6 +110,11 @@
   import PogodiInstrument from '../components/PogodiInstrument'
   import PogodiInstrument2 from '../components/PogodiInstrument2'
   import GameBox from '../components/GameBox'
+  import JednoglasniDiktat2 from '../components/JednoglasniDiktat2'
+  import Diktati from '../components/Diktati'
+  
+
+
 
 
 
@@ -109,14 +146,17 @@ export default {
           open(var1){
                 
                 if(var1===1){
-                    this.$navigateTo(PogodiInstrument);
+                    this.$navigateTo(Diktati);
+                }else if(var1==2) {
+                    this.$navigateTo(PogodiInstrument2);
+                
                 }
                 else if(var1==3)
                 {
                     this.$navigateTo(GameBox);
 
                 }
-                else if(var1==4)
+                else if(var1==3)
                 {
                     this.$navigateTo(PogodiInstrument);
 
@@ -174,7 +214,7 @@ margin-top: 30px;
 }
 
 .glavni{
-  background-image: url("~/images/ribice.jpg");
+  background-image: url("~/images/diktatiPoz.jpg");
   background-size: cover;
   background-position: center;
 }
@@ -183,28 +223,115 @@ margin-top: 30px;
         font-weight: 900;
         color: black;
         top: 40%;
-        left: 30%;
+        left: 29%;
         font-size: 30%;
     }
+
+
+
     .PrviOkvir{
-        width: 800px;
-        height: 570px;
+        width: 850px;
+        height: 1400px;
         background-color: #F2C576;
         border-radius: 20%;
-        margin-top: 500px;
-        margin-left: 150px;
+        margin-top: 250px;
+        margin-left: 100px;
 
     }
     .DrugiOkvir{
-         width: 750px;
-        height: 500px;
+         width: 800px;
+        height: 1300px;
         background-color: #F3D8A7;
         border-radius: 20%;
         margin-top:40px;
-        margin-left: 20px;
+        margin-left: 27px;
         /* margin-top: 500px;
         margin-left: 150px; */
     }
+    .prviOkvirDiktat{
+        height: 360px;
+        width: 750px;
+        /* border-radius: 100%; */
+        background-color: black;
+
+        margin-left: 20px;
+        margin-top: 100px;
+
+
+        background-image: url("~/images/RjesenjeJednoglasni.jpg");
+        background-size: cover;
+        background-position: center;
+    }
+    .drugiOkvirDiktat{
+        height: 360px;
+        width: 750px;
+        /* border-radius: 100%; */
+        background-color: black;
+
+        margin-left: 20px;
+        margin-top: 500px;
+
+
+        background-image: url("~/images/RjesenjeJednoglasni.jpg");
+        background-size: cover;
+        background-position: center;
+    }
+    .treciOkvirDiktat{
+        height: 360px;
+        width: 750px;
+        /* border-radius: 100%; */
+        background-color: black;
+
+        margin-left: 20px;
+        margin-top: 900px;
+
+
+        background-image: url("~/images/RjesenjeJednoglasni.jpg");
+        background-size: cover;
+        background-position: center;
+    }
+    .Button{
+         height: 410px;
+        width: 800px;
+    background-color: transparent;
+    margin-top: -20px;
+    margin-left: -20px;
+
+}
+
+
+.TacanOdgovorSlika{
+        height: 100px;
+        width: 100px;
+        margin-top: 210px;
+        /* margin-left: 4%; */
+        margin-right: 15px;
+        border-radius: 250%;
+
+}
+.NETacanOdgovorSlika1{
+        height: 100px;
+        width: 100px;
+        margin-top: 620px;
+        /* margin-left: 4%; */
+        margin-right: 15px;
+
+        border-radius: 250%;
+}
+.NETacanOdgovorSlika2{
+        height: 100px;
+        width: 100px;
+        margin-top: 1000px;
+        /* margin-left: 4%; */
+        margin-right: 15px;
+        border-radius: 250%;
+}
+Image{
+    border-radius: 250%;
+}
+
+
+
     .TreciOkvir{
         background-color: #F8E9DA;
         width: 500px;

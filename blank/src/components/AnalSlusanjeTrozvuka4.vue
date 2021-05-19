@@ -3,18 +3,51 @@
     <ScrollView>
         <AbsoluteLayout orientation="vertical" class="glavni">
 
-           <AbsoluteLayout class="btn-back" @tap="open(var1=3)">
-                            <Label class="back"
-                                style="background-color: #FA8C54; height: 60; width: 60; border-radius: 50%; " />
-                            <Label class="back2"
-                                style="background-color: #ffe5d0; height: 45; width: 45; border-radius: 50%; " />
-                            <Label class="fas" textWrap="true">
-                                <FormattedString>
-                                    <Span text.decode="&#xf060;" fontAttributes="Bold"></Span>
-                                </FormattedString>
-                            </Label>
-                            <!-- <Button class="fas" text.decode="&#xf060;" ></Button> -->
+           <AbsoluteLayout class="btn"  @tap="open(var1=1)">
+                <Label  class="back"
+                    style="background-color: #FA8C54; height: 60; width: 60; border-radius: 50%; " />
+                <Label class="back2"
+                    style="background-color: #ffe5d0; height: 45; width: 45; border-radius: 50%; " />
+                <Label class="fas" textWrap="true">
+                    <FormattedString>
+                        <Span text.decode="&#xf060;" fontAttributes="Bold"></Span>
+                    </FormattedString>
+                </Label>
+                        <!-- <Button class="fas" text.decode="&#xf060;"  ></Button> -->
+                <Label class="circle-music1"
+                    style="background-color: #FA8C54; height: 60; width: 60; border-radius: 50%; " />
+                <Label class="circle-music2"
+                    style="background-color: #ffe5d0; height: 45; width: 45; border-radius: 50%; " />
+                <Label class="fas-volume-on" textWrap="true">
+                    <FormattedString>
+                        <Span text.decode="&#xf028;" fontAttributes="Bold"></Span>
+                    </FormattedString>
+              	</Label>
+
+
+
             </AbsoluteLayout>
+             <Label class="home1"
+                    style="background-color: #FA8C54; height: 60; width: 60; border-radius: 50%; "  @tap="open(var1=3)" />
+                <Label class="home2"
+                    style="background-color: #ffe5d0; height: 45; width: 45; border-radius: 50%; " />
+                <Label class="fas-home" textWrap="true">
+                    <FormattedString>
+                        <Span text.decode="&#xf015;" fontAttributes="Bold"></Span>
+                    </FormattedString>
+              	</Label>
+                  <Label class="VratiSe" text="Vrati se na početak"></Label>
+
+                <Label class="replay1"
+                    style="background-color: #FA8C54; height: 60; width: 60; border-radius: 50%; " @tap="open(var1=4)"/>
+                <Label class="replay2"
+                    style="background-color: #ffe5d0; height: 45; width: 45; border-radius: 50%; " />
+                <Label class="fas-replay" textWrap="true">
+                    <FormattedString>
+                        <Span text.decode="&#xf122;" fontAttributes="Bold"></Span>
+                    </FormattedString>
+              	</Label>  
+                  <Label class="IgrajPonovo" text="Igraj ponovo"></Label>
 
 
 <AbsoluteLayout class="TreciOkvir" >
@@ -22,7 +55,17 @@
 </AbsoluteLayout>
 <AbsoluteLayout class="PrviOkvir">
 
-<AbsoluteLayout class="DrugiOkvir"></AbsoluteLayout>
+<AbsoluteLayout class="DrugiOkvir">
+     <Label top="60" textWrap="true" class="ukupno" textAlignment="center" left="20">
+     <FormattedString >
+     <span text="Osvojili ste ukupno " class="txt1"/>
+     <span  class="txt2"> {{bodovi}} </span>
+     <span text=" bodova" class="txt3" />
+
+     </FormattedString>
+     </Label>
+    <!-- <Label>{{bodovi}}</Label> -->
+</AbsoluteLayout>
 </AbsoluteLayout>
 
          
@@ -34,16 +77,18 @@
 <script>
   import PogodiInstrument from '../components/PogodiInstrument'
   import PogodiInstrument2 from '../components/PogodiInstrument2'
+  import GameBox from '../components/GameBox'
+  import AnalSlusanjeTrozvuka from '../components/AnalSlusanjeTrozvuka'
   import Diktati from '../components/Diktati'
+
+  
+
+
 
 
 
 export default {
-    computed: {
-      message() {
-        return "Blank {N}-Vue app";
-      }
-    },
+     props:["bodovi"],
     data(){
     return{
        porukaNePrikazuj : '',
@@ -52,7 +97,8 @@ export default {
          porukaNePrikazuj1 : '',
         porukaPrikazi1: "        1.  Napisite u svoje kajdanke 10 cijelih nota d1",
         var2:2,
-        zatvori:false
+        zatvori:false,
+        
 
     }},
     methods:{
@@ -68,16 +114,21 @@ export default {
           open(var1){
                 
                 if(var1===1){
-                    this.$navigateTo(PogodiInstrument);
+                    this.$navigateTo(AnalSlusanjeTrozvuka);
                 }else if(var1==2) {
                     this.$navigateTo(PogodiInstrument2);
                 
                 }
                 else if(var1==3)
-          {
+                {
                     this.$navigateTo(Diktati);
 
-          }
+                }
+                else if(var1==4)
+                {
+                                        this.$navigateTo(AnalSlusanjeTrozvuka);
+
+                }
           }
     }
 }  
@@ -86,6 +137,49 @@ export default {
 
 
 <style scoped>
+
+/* .fas-home{
+margin-top: 30px;
+} */
+.fas-home{
+    font-family: 'Font Awesome 5 Free', 'fa-solid-900';
+  font-weight: 900;
+  color: black;
+  font-size: 30%;
+   margin-top: 820px;
+    margin-left: 630px;
+    z-index: 1;
+
+}
+.fas-replay{
+     font-family: 'Font Awesome 5 Free', 'fa-solid-900';
+  font-weight: 900;
+  color: black;
+  font-size: 30%;
+  margin-top: 830px;
+    margin-left: 325px;
+    z-index: 1;
+}
+.replay1{
+    margin-top: 800px;
+    margin-left: 300px;
+    z-index: 1;
+}
+.replay2{
+    margin-top: 820px;
+    margin-left: 320px;
+    z-index: 1;
+}
+.home1{
+    margin-top: 800px;
+    margin-left: 600px;
+    z-index: 1;
+}
+.home2{
+     margin-top: 816px;
+    margin-left: 620px;
+    z-index: 1;
+}
 
 .glavni{
   background-image: url("~/images/diktatiPoz.jpg");
@@ -105,7 +199,7 @@ export default {
         height: 570px;
         background-color: #F2C576;
         border-radius: 20%;
-        margin-top: 600px;
+        margin-top: 500px;
         margin-left: 150px;
 
     }
@@ -123,7 +217,7 @@ export default {
         background-color: #F8E9DA;
         width: 500px;
         height: 200px;
-        margin-top: 500px;
+        margin-top: 470px;
         margin-left: 280px;
         border-radius: 20%;
         z-index: 1;
@@ -135,5 +229,42 @@ export default {
         margin-top: 50px;
         font-weight: bold;
 
+    }
+    .ukupno{
+        text-align: center;
+        line-height: 2rem;
+
+    }
+    .txt{
+        line-height: 5rem;
+        letter-spacing: 1rem;
+        /* color:gold; */
+    }
+    .txt1{
+        font-size: 18px;
+        line-height: 5rem;
+        letter-spacing: 1rem;
+    }
+    .txt2{
+        font-size: 20px;
+        font-weight: bold;
+        line-height: 5rem;
+        letter-spacing: 1rem
+
+    }
+    .txt3{
+        font-size: 18px;
+        line-height: 5rem;
+        letter-spacing: 1rem;
+    }
+    .VratiSe{
+        margin-top: 960px;
+    margin-left: 550px;
+    z-index: 1;
+    }
+    .IgrajPonovo{
+        margin-top: 960px;
+    margin-left: 300px;
+    z-index: 1;
     }
 </style>

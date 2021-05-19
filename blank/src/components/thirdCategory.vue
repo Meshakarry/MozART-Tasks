@@ -29,7 +29,7 @@
 
                         </FormattedString>
                     </Label> -->
-                    <MusicButton :clicked="false"/>
+                    <MusicButton class="MusicButton" :clicked="false"/>
                 </AbsoluteLayout>
 
                 <AbsoluteLayout class="first" width="300" height="180"
@@ -216,6 +216,16 @@ import MusicButton from '../components/MusicButton'
 </script>
 
 <style scoped>
+.circle-music1{
+    margin-top:-50px ;
+}
+.circle-music2{
+    margin-top:-50px ;
+}
+.MusicButton{
+    margin-top:-50px ;
+
+}
     .home-panel {
         vertical-align: center;
         font-size: 20;
@@ -241,7 +251,8 @@ import MusicButton from '../components/MusicButton'
         margin-bottom: 15;
     }
     .glavni{
-    background-image:url("https://i.pinimg.com/564x/30/79/6f/30796f7dd77e06062526f81d6bdc5eaa.jpg");
+      background-image: url("~/images/GB.jpg");
+
     background-position: center;
     background-size: cover;
 }

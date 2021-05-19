@@ -3,7 +3,7 @@
     <Page actionBarHidden="true">
         <StackLayout class="glavni">
 
-            <AbsoluteLayout class="btn">
+            <AbsoluteLayout class="btn" @tap="open(var1=1)">
                 <Label  class="back"
                     style="background-color: blue; height: 60; width: 60; border-radius: 50%; " />
                 <Label class="back2"
@@ -95,6 +95,8 @@
     import { PanGestureEventData } from "ui/gestures";
     import { ImagePopup } from 'nativescript-image-popup';
     import { ImagePopupOptions } from 'nativescript-image-popup/classes';
+    import GameBox from '../components/GameBox'
+
 
     export default {
     name: "Home",
@@ -164,6 +166,13 @@
         this.dropArea3 = this.$refs.dropArea3.nativeView;
     },
     methods: {
+        open(var1){
+                
+                if(var1===1){
+                    this.$navigateTo(GameBox);
+                }
+                console.log("When nothings goes right, go left");
+            },
         onPan(args, ref, box) {
         // Down
         if (args.state === 1) {

@@ -35,7 +35,7 @@
 
 <AbsoluteLayout class="treciOkvir">
      <!-- <Button></Button>     -->
-     <Button class="Button"  @tap="onTap" ></Button>
+     <Button class="Button"  @tap="onTapTacna" ref="tacna" ></Button>
 
 </AbsoluteLayout>
 
@@ -52,7 +52,7 @@
                </StackLayout>
         </GridLayout>
 
-         <GridLayout v-if="porukaNePrikazuj" class="NETacanOdgovorSlika2" textWrap="true"  textAlignment="center">
+         <GridLayout v-if="tacna" class="NETacanOdgovorSlika2" textWrap="true"  textAlignment="center">
              <StackLayout>
               <Image src="~/images/tacanOdgovor1.jpg" ></Image>
                </StackLayout>
@@ -64,8 +64,13 @@
 
 
 </AbsoluteLayout>
-<Button class="PokreniPonovo" text="Pokreni ponovo" @tap="open(var1=1)"></Button>
-<Button class="PokreniNarednu" text="Prikaži rezultat" @tap="open(var1=2)"></Button>
+<Button class="PokreniPonovo" text="Pokreni ponovo" @tap="reset()"></Button>
+<Button :class="[ isDisabled?'disabled':'PokreniNarednu']"  text="Prikaži rezultat" @tap="open(var1=2)" ></Button>
+ <AbsoluteLayout>
+  <Label class="labelBod" left="490" top="-340" color="orange">Bodovi :</Label>
+   <TextField class="inputBod" left="560" top="-340" :text="bodovi" editable="false"  borderRadius="10" borderColor="orange" borderWidth="2" />
+
+ </AbsoluteLayout>
 
 </AbsoluteLayout>
 </ScrollView>
@@ -85,40 +90,103 @@
 
 
  export default {
-     computed: {
-      message() {
-        return "Blank {N}-Vue app";
-      }
-    },
+      props:["bodovi"],
     data(){
     return{
        porukaNePrikazuj : '',
         porukaPrikazi: " ",
-        zatvori:false
+        zatvori:false,
+        isDisabled:false,
+        zatvori:false,
+        isLoadedZero:true,
+        tacna:false,
+        isLoadedTen:false
 
     }},
+    mounted() {
+          
+        this.isDisabled=true;
+        if(this.bodovi!=0 ){
+         this.isLoadedZero=false;
+         this.isLoadedTen=true;
+        }
+        else if(this.bodovi==10){
+         isLoadedTen=true;
+        }
+        },
      methods:{
-          onTap(){
+         onTap(){
             if(this.porukaNePrikazuj === ''){
-                // console.log("Prikazi nesto")
+                this.isDisabled=false;
                 this.porukaNePrikazuj=this.porukaPrikazi
-                this.porukaNePrikazuj1='';
-
+                this.tacna=true;
             }
+                
+                // this.netacna=true;
+              
+            },
 
-          },
-           open(var1){
+            onTapTacna(){
+                   if( this.$refs.tacna){
+                       this.tacna=true;
+                       this.bodovi+=10;
 
-                if(var1===1){
-                    this.$navigateTo(AnalSlusanjeTrozvuka3);
-                }else if(var1==2) {
-                    this.$navigateTo(AnalSlusanjeTrozvuka4);
+                   }
+                this.porukaNePrikazuj=this.porukaPrikazi
+                this.isDisabled=false;
 
-                }else if(var1==3) {
+
+
+            
+            },
+          open(var1){
+                
+                 if(var1==2 && this.porukaNePrikazuj!=='' ) {
+                    this.$navigateTo(AnalSlusanjeTrozvuka4,{
+                     props:{
+                         bodovi:this.bodovi
+                     }
+                    
+                    
+                    });
+                
+                }
+                else if(var1==3){
                     this.$navigateTo(Diktati);
 
                 }
-          }
+          },
+          reset(){
+              this.porukaNePrikazuj='';
+            this.tacna=false;
+
+              switch(this.bodovi){
+                  case 30:
+                      this.bodovi=20;
+                  break;
+                  case 20:
+                    if(this.isLoadedTen){
+                        this.bodovi=10;
+                    }
+                    else{
+                    this.bodovi=20;
+                    }
+                break;
+                  case 10:
+             if(!this.isLoadedZero && this.isLoadedTen){
+                this.bodovi=10;
+             }
+             else {
+               this.bodovi=0;
+             }
+                 break;
+
+              }
+                //  case this.isLoadedZero:
+                     
+                //      this.bodovi=0;
+              this.isDisabled=true;
+          },
      }
  }
 </script>
@@ -253,4 +321,28 @@ Image{
 
     color: white;
 }
+.disabled{
+      opacity: 0.9; 
+      width: 200px;
+    height: 200px;
+  
+    border-radius: 100%;
+    margin-top: 600px;
+    margin-left: 800px;
+    color: black;
+    background-color: lightgray;
+}
+.labelBod{
+  color:orange;
+  font-size: 23;
+  margin-top: 900px;
+  margin-left: -600px;
+ }
+ .inputBod{
+  width:50;
+  /* padding: 5; */
+  text-align: center;
+  margin-top: 900px;
+  margin-left: -550px;
+ }
 </style>

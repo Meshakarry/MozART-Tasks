@@ -72,7 +72,7 @@
 </template>
 
 <script>
-    import MemoryCategories from '../components/MemoryCategories'
+    import Memori from '../components/Memori'
     import Puzzle from '../components/Puzzle'
     import Home from '../components/Home'
     import PogodiInstrument from '../components/PogodiInstrument'
@@ -85,7 +85,7 @@
           open(var1){
                 
                 if(var1===1){
-                    this.$navigateTo(MemoryCategories);
+                    this.$navigateTo(Memori);
                 }else if(var1==2) {
                     this.$navigateTo(Puzzle);
                 }
