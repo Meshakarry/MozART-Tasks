@@ -27,7 +27,7 @@ import PuzzleCategories from './components/PuzzleCategories.vue';
 Vue.registerElement("VideoPlayer", () => require("nativescript-videoplayer").Video);
 
 new Vue({​​​​​
-render:h=>h('frame', [h(PogodiInstrument4)])
+render:h=>h('frame', [h(Home)])
 }​​​​​).$start()
 
 export function onLabelLoaded(args) {

@@ -5,10 +5,10 @@
 
     <AbsoluteLayout class="btn">
                 <Label  class="back"
-                    style="background-color: blue; height: 60; width: 60; border-radius: 50%; " />
+                    style="background-color: blue; height: 60; width: 60; border-radius: 50%; " @tap="open(var1=1)" />
                 <Label class="back2"
                     style="background-color: #ffe5d0; height: 45; width: 45; border-radius: 50%; " />
-                <Label class="fas" textWrap="true" @tap="open(var1=3)">
+                <Label class="fas" textWrap="true" >
                     <FormattedString>
                         <Span text.decode="&#xf060;" fontAttributes="Bold" @tap="$navigateBack"></Span>
                     </FormattedString>
@@ -53,6 +53,8 @@
  import _ from 'lodash'
     import { ImagePopup } from 'nativescript-image-popup';
     import {nizKategorija} from '~/data/kategorije.js'
+import GameBox from '../components/GameBox'
+
 
  export default{
      data(){
@@ -68,6 +70,14 @@
 
     },
        methods:{
+           open(var1){
+                
+                if(var1===1){
+                    this.$navigateTo(GameBox);
+                }
+                
+    
+        },
             turn(card){
                     if(card.isMatched || card.isFlipped || this.flippedCards.length === 2)
                           return;
@@ -106,14 +116,14 @@
                                 
                 const random=Math.floor(Math.random()*this.nizKategorija.length);
                 //  console.log(this.nizKategorija[random]);
-                    this.nizKategorija[3].forEach((card) => {
+                    this.nizKategorija[random].forEach((card) => {
                     card.isFlipped = false;
                     card.isMatched=false;
                 });
 
                 setTimeout(() => {
                 this.memoryCards = [];
-                this.memoryCards = _.shuffle(this.memoryCards.concat(_.cloneDeep(this.nizKategorija[3]), _.cloneDeep(this.nizKategorija[3])));
+                this.memoryCards = _.shuffle(this.memoryCards.concat(_.cloneDeep(this.nizKategorija[random]), _.cloneDeep(this.nizKategorija[random])));
 
                  this.finish = false;
                  this.flippedCards = [];
