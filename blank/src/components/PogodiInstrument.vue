@@ -168,6 +168,16 @@ export default {
         left: 30%;
         font-size: 30%;
     }
+    .circle-music1{
+margin-left: 40px;
+    }
+        .circle-music2{
+margin-left: 40px;
+    }
+    .fas-volume-on{
+        margin-left: 40px;
+    }
+   
     .ZaVideo{
         background-image: url("~/images/kompozicija.png");
         background-size: cover;
@@ -282,10 +292,14 @@ Image{
  .labelBod{
   color:orange;
   font-size: 23;
+  margin-top: 1200px;
+  margin-left: -600px;
  }
  .inputBod{
   width:50;
   /* padding: 5; */
   text-align: center;
+  margin-top: 1205px;
+  margin-left: -550px;
  }
 </style>

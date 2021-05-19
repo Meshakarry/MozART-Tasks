@@ -3,7 +3,7 @@
     <ScrollView>
         <AbsoluteLayout orientation="vertical" class="glavni">
 
-           <AbsoluteLayout class="btn">
+           <AbsoluteLayout class="btn"  @tap="open(var1=1)">
                 <Label  class="back"
                     style="background-color: blue; height: 60; width: 60; border-radius: 50%; " />
                 <Label class="back2"
@@ -23,7 +23,31 @@
                         <Span text.decode="&#xf028;" fontAttributes="Bold"></Span>
                     </FormattedString>
               	</Label>
+
+
+
             </AbsoluteLayout>
+             <Label class="home1"
+                    style="background-color: blue; height: 60; width: 60; border-radius: 50%; "  @tap="open(var1=3)" />
+                <Label class="home2"
+                    style="background-color: #ffe5d0; height: 45; width: 45; border-radius: 50%; " />
+                <Label class="fas-home" textWrap="true">
+                    <FormattedString>
+                        <Span text.decode="&#xf015;" fontAttributes="Bold"></Span>
+                    </FormattedString>
+              	</Label>
+                  <Label class="VratiSe" text="Vrati se na početak"></Label>
+
+                <Label class="replay1"
+                    style="background-color: blue; height: 60; width: 60; border-radius: 50%; " @tap="open(var1=4)"/>
+                <Label class="replay2"
+                    style="background-color: #ffe5d0; height: 45; width: 45; border-radius: 50%; " />
+                <Label class="fas-replay" textWrap="true">
+                    <FormattedString>
+                        <Span text.decode="&#xf122;" fontAttributes="Bold"></Span>
+                    </FormattedString>
+              	</Label>  
+                  <Label class="IgrajPonovo" text="Igraj ponovo"></Label>
 
 
 <AbsoluteLayout class="TreciOkvir" >
@@ -34,9 +58,9 @@
 <AbsoluteLayout class="DrugiOkvir">
      <Label top="60" textWrap="true" class="ukupno" textAlignment="center" left="20">
      <FormattedString >
-     <span text="Osvojili ste ukupnoo" class="txt"/>
-     <span fontWeight="bold" class="txt"> {{bodovi}} </span>
-     <span text="bodova" class="txt" />
+     <span text="Osvojili ste ukupno " class="txt1"/>
+     <span  class="txt2"> {{bodovi}} </span>
+     <span text=" bodova" class="txt3" />
 
      </FormattedString>
      </Label>
@@ -53,6 +77,9 @@
 <script>
   import PogodiInstrument from '../components/PogodiInstrument'
   import PogodiInstrument2 from '../components/PogodiInstrument2'
+  import GameBox from '../components/GameBox'
+
+
 
 
 export default {
@@ -87,6 +114,16 @@ export default {
                     this.$navigateTo(PogodiInstrument2);
                 
                 }
+                else if(var1==3)
+                {
+                    this.$navigateTo(GameBox);
+
+                }
+                else if(var1==3)
+                {
+                    this.$navigateTo(PogodiInstrument);
+
+                }
           }
     }
 }  
@@ -95,6 +132,49 @@ export default {
 
 
 <style scoped>
+
+/* .fas-home{
+margin-top: 30px;
+} */
+.fas-home{
+    font-family: 'Font Awesome 5 Free', 'fa-solid-900';
+  font-weight: 900;
+  color: black;
+  font-size: 30%;
+   margin-top: 820px;
+    margin-left: 630px;
+    z-index: 1;
+
+}
+.fas-replay{
+     font-family: 'Font Awesome 5 Free', 'fa-solid-900';
+  font-weight: 900;
+  color: black;
+  font-size: 30%;
+  margin-top: 830px;
+    margin-left: 325px;
+    z-index: 1;
+}
+.replay1{
+    margin-top: 800px;
+    margin-left: 300px;
+    z-index: 1;
+}
+.replay2{
+    margin-top: 820px;
+    margin-left: 320px;
+    z-index: 1;
+}
+.home1{
+    margin-top: 800px;
+    margin-left: 600px;
+    z-index: 1;
+}
+.home2{
+     margin-top: 816px;
+    margin-left: 620px;
+    z-index: 1;
+}
 
 .glavni{
   background-image: url("~/images/ribice.jpg");
@@ -154,5 +234,32 @@ export default {
         line-height: 5rem;
         letter-spacing: 1rem;
         /* color:gold; */
+    }
+    .txt1{
+        font-size: 18px;
+        line-height: 5rem;
+        letter-spacing: 1rem;
+    }
+    .txt2{
+        font-size: 20px;
+        font-weight: bold;
+        line-height: 5rem;
+        letter-spacing: 1rem
+
+    }
+    .txt3{
+        font-size: 18px;
+        line-height: 5rem;
+        letter-spacing: 1rem;
+    }
+    .VratiSe{
+        margin-top: 960px;
+    margin-left: 550px;
+    z-index: 1;
+    }
+    .IgrajPonovo{
+        margin-top: 960px;
+    margin-left: 300px;
+    z-index: 1;
     }
 </style>

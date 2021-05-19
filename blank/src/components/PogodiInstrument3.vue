@@ -67,7 +67,7 @@
 
 
 <Button class="PokreniPonovo" text="Pokreni ponovo" @tap="reset()"></Button>
-<Button :class="[ isDisabled?'disabled':'PokreniNarednu']"  text="Pokreni narednu" @tap="open(var1=2)" ></Button>
+<Button :class="[ isDisabled?'disabled':'PokreniNarednu']"  text="Prikaži rezultat" @tap="open(var1=2)" ></Button>
  <AbsoluteLayout>
    <Label class="labelBod" left="240" top="20">Bodovi :</Label>
    <TextField class="inputBod" left="310" top="20" :text="bodovi"  borderRadius="10" borderColor="orange" borderWidth="2" />
@@ -204,6 +204,15 @@ export default {
         left: 30%;
         font-size: 30%;
     }
+      .circle-music1{
+margin-left: 40px;
+    }
+        .circle-music2{
+margin-left: 40px;
+    }
+    .fas-volume-on{
+        margin-left: 40px;
+    }
     .ZaVideo{
          background-image: url("~/images/punoNota.png");
         background-size: cover;
@@ -318,10 +327,14 @@ Image{
  .labelBod{
   color:orange;
   font-size: 23;
+  margin-top: 1200px;
+  margin-left: -600px;
  }
  .inputBod{
   width:50;
   /* padding: 5; */
   text-align: center;
+  margin-top: 1205px;
+  margin-left: -550px;
  }
 </style>

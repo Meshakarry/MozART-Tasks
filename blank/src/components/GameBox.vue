@@ -75,6 +75,8 @@
     import MemoryCategories from '../components/MemoryCategories'
     import Puzzle from '../components/Puzzle'
     import Home from '../components/Home'
+    import PogodiInstrument from '../components/PogodiInstrument'
+
 
 
 
@@ -88,7 +90,7 @@
                     this.$navigateTo(Puzzle);
                 }
                 else if(var1==3) {
-                    this.$navigateTo(Puzzle);
+                    this.$navigateTo(PogodiInstrument);
                 }
                 else{
                     this.$navigateTo(Home);
