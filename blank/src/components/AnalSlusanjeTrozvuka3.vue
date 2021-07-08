@@ -71,7 +71,7 @@
    <TextField class="inputBod" left="560" top="-340" :text="bodovi" editable="false"  borderRadius="10" borderColor="orange" borderWidth="2" />
 
  </AbsoluteLayout>
-
+ <ButtonTrozvuk/>
 </AbsoluteLayout>
 </ScrollView>
 </Page>
@@ -82,6 +82,8 @@
   import AnalSlusanjeTrozvuka3 from '../components/AnalSlusanjeTrozvuka3'
   import AnalSlusanjeTrozvuka4 from '../components/AnalSlusanjeTrozvuka4'
   import Diktati from '../components/Diktati'
+import ButtonTrozvuk from '../components/ButtonTrozvuk'
+
 
 
 
@@ -103,6 +105,8 @@
         isLoadedTen:false
 
     }},
+       components: {ButtonTrozvuk, },
+
     mounted() {
           
         this.isDisabled=true;

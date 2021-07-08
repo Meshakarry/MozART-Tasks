@@ -43,7 +43,7 @@
  background-color: red;
  width: 800px;
  height: 700px;
- background-image: url("~/images/puzle.png");
+ background-image: url("~/images/mem.png");
  background-size: cover;
  background-position: center;
   
@@ -54,7 +54,7 @@
  background-color: yellow;
  width: 800px;
  height: 700px;
- background-image: url("~/images/mem.png");
+ background-image: url("~/images/PuzzlePozadinaPrava.jpg");
  background-size: cover;
  background-position: center;
 }
@@ -129,4 +129,13 @@
   top: 42;
   left: 333;
   font-size: 30%;
+}
+.fas-play{
+  font-family: Font Awesome 5 Free, fa-solid-900;
+  font-weight: 900;
+  color: white;
+  font-size: 40%;
+  margin-top: 540px;
+  margin-left: 25%;
+
 }

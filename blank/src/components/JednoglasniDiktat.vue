@@ -38,7 +38,7 @@ Glazbena mjera: 4/4
 
                 <button class="dugme" text="PRESLUŠATI FRAZE" @tap="open(var1=2)"></button>
 
-
+              <ButtonJednoglasni/>
             </AbsoluteLayout>
 </StackLayout>
 </ScrollView>
@@ -49,7 +49,7 @@ Glazbena mjera: 4/4
 <script>
 import JednoglasniDiktat2 from '../components/JednoglasniDiktat2'
 import Diktati from '../components/Diktati'
-
+import ButtonJednoglasni from '../components/ButtonJednoglasni'
 
 export default {
      props:["bodovi"],
@@ -65,6 +65,8 @@ export default {
         
 
     }},
+       components: {ButtonJednoglasni, },
+
     methods:{
           onTap(){
             if(this.porukaNePrikazuj === ''){

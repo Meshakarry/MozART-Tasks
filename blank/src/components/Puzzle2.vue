@@ -5,7 +5,7 @@
 
             <AbsoluteLayout class="btn">
                 <Label  class="back"
-                    style="background-color: blue; height: 60; width: 60; border-radius: 50%; " />
+                    style="background-color: blue; height: 60; width: 60; border-radius: 50%; " @tap="open(var1=1)"/>
                 <Label class="back2"
                     style="background-color: #ffe5d0; height: 45; width: 45; border-radius: 50%; " />
                 <Label class="fas" textWrap="true">
@@ -14,15 +14,7 @@
                     </FormattedString>
                 </Label>
                         <!-- <Button class="fas" text.decode="&#xf060;"  ></Button> -->
-                <Label class="circle-music1"
-                    style="background-color: blue; height: 60; width: 60; border-radius: 50%; " />
-                <Label class="circle-music2"
-                    style="background-color: #ffe5d0; height: 45; width: 45; border-radius: 50%; " />
-                <Label class="fas-volume-on" textWrap="true">
-                    <FormattedString>
-                        <Span text.decode="&#xf028;" fontAttributes="Bold"></Span>
-                    </FormattedString>
-              	</Label>
+                
             </AbsoluteLayout>
 
             <GridLayout
@@ -97,6 +89,8 @@
     import { ImagePopupOptions } from 'nativescript-image-popup/classes';
     const { isIOS } = require('tns-core-modules/platform');
     const { TNSPlayer } = require('nativescript-audio');
+    import PuzzleCategories from '../components/PuzzleCategories'
+
 
     export default {
     name: "Home",
@@ -213,6 +207,12 @@
         this.dropArea3 = this.$refs.dropArea3.nativeView;
     },
     methods: {
+         open(var1){
+                
+                if(var1===1){
+                    this.$navigateTo(PuzzleCategories);
+                }
+         },
         onPan(args, ref, box) {
         // Down
         if (args.state === 1) {

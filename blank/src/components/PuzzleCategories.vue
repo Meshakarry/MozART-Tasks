@@ -3,7 +3,7 @@
 <ScrollView>
 <AbsoluteLayout orientation="vertical" class="glavni">
 
-  <AbsoluteLayout class="btn-back" @tap="open(var1=3)" >
+  <AbsoluteLayout class="btn-back" @tap="open(var1=6)" >
                             <Label class="back"
                                 style="background-color: blue; height: 60; width: 60; border-radius: 50%; " />
                             <Label class="back2"
@@ -17,7 +17,7 @@
             </AbsoluteLayout>
                      
 
-                <GridLayout class="okvir1">
+                <GridLayout class="okvir1" @tap="open(var1=5)">
                 <Image src="~/images/puzzleViolina.jpg" class="slika" />
                 </GridLayout>
 
@@ -25,15 +25,15 @@
                 <Image src="~/images/Boy.jpg" class="slika" />
                 </GridLayout>
 
-                <GridLayout class="okvir3">
+                <GridLayout class="okvir3" @tap="open(var1=2)">
                 <Image src="~/images/puzzleKlavir.jpg" class="slika" />
                 </GridLayout>
 
-                <GridLayout class="okvir4">
+                <GridLayout class="okvir4" @tap="open(var1=3)">
                 <Image src="~/images/puzzleSaksofon.jpg" class="slika" />
                 </GridLayout>
 
-                <GridLayout class="okvir5">
+                <GridLayout class="okvir5" @tap="open(var1=4)">
                 <Image src="~/images/puzzleDrums.jpg" class="slika" />
                 </GridLayout> 
 
@@ -46,6 +46,13 @@
 
 <script>
 import Puzzle from '../components/Puzzle'
+import Puzzle1 from '../components/Puzzle1'
+import Puzzle2 from '../components/Puzzle2'
+import Puzzle3 from '../components/Puzzle3'
+import Puzzle4 from '../components/Puzzle4'
+import GameBox from '../components/GameBox'
+
+
 
 export default {
     
@@ -54,6 +61,31 @@ export default {
                 
                 if(var1===1){
                     this.$navigateTo(Puzzle);
+                }
+                else if(var1==2)
+                {
+                    this.$navigateTo(Puzzle1);
+
+                }
+                else if(var1==3)
+                {
+                    this.$navigateTo(Puzzle2);
+
+                }
+                else if(var1==4)
+                {
+                    this.$navigateTo(Puzzle3);
+
+                }
+                else if(var1==5)
+                {
+                    this.$navigateTo(Puzzle4);
+
+                }
+                else if(var1==6)
+                {
+                    this.$navigateTo(GameBox);
+
                 }
     
         }
@@ -76,44 +108,44 @@ export default {
     }
 
 .slika{
-    width: 600px;
+    width: 80%;
 }
 .okvir1{
-    background-color: #0B9CBE;
-    height: 1100px;
-    width: 650px;
-    left: 60px;
-    top: 350px;
+    background-color: orange;
+    height: 700px;
+    width: 450px;
+    left: 40px;
+    top: 275px;
 }
 
 .okvir2{
     background-color: #23B943;
-    height: 900px;
-    width: 650px;
+    height: 600px;
+    width: 450px;
     top: 150px;
-    left: 760px;
+    left: 600px;
 }
 .okvir3{
     background-color: #EB8B11;
-    height: 800px;
-    width: 650px;
-    top: 1130px;
-    left: 760px;
+    height: 500px;
+    width: 450px;
+    top: 775px;
+    left: 600px;
 }
 .okvir4{
 background-color: #DF4F3D;
-    height: 960px;
-    width: 650px;
-    top: 1520px;
-    left: 60px;
+    height: 600px;
+    width: 450px;
+    top: 1050px;
+    left: 40px;
 
 }
 .okvir5{
 background-color: #10CEF0;
-    height: 490px;
-    width: 650px;
-    top: 2000px;
-    left: 760px;
+    height: 400px;
+    width: 450px;
+    top: 1300px;
+    left: 600px;
 }
 
 </style>

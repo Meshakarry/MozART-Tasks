@@ -13,16 +13,12 @@
                         <Span text.decode="&#xf060;" fontAttributes="Bold"></Span>
                     </FormattedString>
                 </Label>
+                 <Label class="circle-music1"
+                        style="background-color: blue; height: 60; width: 60; border-radius: 50%; " />
+                    <Label class="circle-music2"
+                        style="background-color: #ffe5d0; height: 45; width: 45; border-radius: 50%; " />
                         <!-- <Button class="fas" text.decode="&#xf060;"  ></Button> -->
-                <Label class="circle-music1"
-                    style="background-color: blue; height: 60; width: 60; border-radius: 50%; " />
-                <Label class="circle-music2"
-                    style="background-color: #ffe5d0; height: 45; width: 45; border-radius: 50%; " />
-                <Label class="fas-volume-on" textWrap="true">
-                    <FormattedString>
-                        <Span text.decode="&#xf028;" fontAttributes="Bold"></Span>
-                    </FormattedString>
-              	</Label>
+                 <MusicButton/>
   </AbsoluteLayout>
 
 <!-- <Label v-if="porukaNePrikazuj"  text="nesto" :key="porukaPrikazi" ></Label> -->
@@ -88,6 +84,8 @@
 </Page>
 </template>
 <script>
+import MusicButton from '../components/MusicButton'
+
 // import DictatsCompositions from './components/DictatsCompositions.vue'; 
 import DictatsCompositions from '../components/DictatsCompositions'
 import Home from '../components/Home'
@@ -105,6 +103,8 @@ import AnalSlusanjeTrozvuka from '../components/AnalSlusanjeTrozvuka'
         return "Blank {N}-Vue app";
       }
     },
+       components: {MusicButton, },
+    
   data(){
     return{
         porukaNePrikazuj : '',
@@ -113,7 +113,8 @@ import AnalSlusanjeTrozvuka from '../components/AnalSlusanjeTrozvuka'
          porukaNePrikazuj1 : '',
         porukaPrikazi1: "        1.  Napisite u svoje kajdanke 10 cijelih nota d1",
         var2:2,
-        zatvori:false
+        zatvori:false,
+
 
     }},
 methods:{

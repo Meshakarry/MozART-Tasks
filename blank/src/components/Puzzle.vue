@@ -14,15 +14,7 @@
                     </FormattedString>
                 </Label>
                         <!-- <Button class="fas" text.decode="&#xf060;"  ></Button> -->
-                <Label class="circle-music1"
-                    style="background-color: blue; height: 60; width: 60; border-radius: 50%; " />
-                <Label class="circle-music2"
-                    style="background-color: #ffe5d0; height: 45; width: 45; border-radius: 50%; " />
-                <Label class="fas-volume-on" textWrap="true">
-                    <FormattedString>
-                        <Span text.decode="&#xf028;" fontAttributes="Bold"></Span>
-                    </FormattedString>
-              	</Label>
+               
             </AbsoluteLayout>
 
             <GridLayout
@@ -96,8 +88,12 @@
     import { ImagePopup } from 'nativescript-image-popup';
     import { ImagePopupOptions } from 'nativescript-image-popup/classes';
     import GameBox from '../components/GameBox'
+import PuzzleCategoriesVue from './PuzzleCategories.vue';
     const { isIOS } = require('tns-core-modules/platform');
     const { TNSPlayer } = require('nativescript-audio');
+    import PuzzleCategories from '../components/PuzzleCategories'
+
+
 
     export default {
     name: "Home",
@@ -162,6 +158,7 @@
         ],
         };
     },
+
     computed: {},
     created() {
         this._player = new TNSPlayer();
@@ -217,7 +214,7 @@
         open(var1){
                 
                 if(var1===1){
-                    this.$navigateTo(GameBox);
+                    this.$navigateTo(PuzzleCategories);
                 }
                 console.log("When nothings goes right, go left");
             },

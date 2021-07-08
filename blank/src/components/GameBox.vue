@@ -17,14 +17,11 @@
                 </Label>
                         <!-- <Button class="fas" text.decode="&#xf060;"  ></Button> -->
                 <Label class="circle-music1"
-                    style="background-color: blue; height: 60; width: 60; border-radius: 50%; " />
-                <Label class="circle-music2"
-                    style="background-color: #ffe5d0; height: 45; width: 45; border-radius: 50%; " />
-                <Label class="fas-volume-on" textWrap="true">
-                    <FormattedString>
-                        <Span text.decode="&#xf028;" fontAttributes="Bold"></Span>
-                    </FormattedString>
-              	</Label>
+                        style="background-color: blue; height: 60; width: 60; border-radius: 50%; " />
+                    <Label class="circle-music2"
+                        style="background-color: #ffe5d0; height: 45; width: 45; border-radius: 50%; " />
+                        <!-- <Button class="fas" text.decode="&#xf060;"  ></Button> -->
+                 <MusicButton/>
             </AbsoluteLayout>         
 
             <AbsoluteLayout class="prvi" @tap="open(var1=1)">
@@ -76,18 +73,24 @@
     import Puzzle from '../components/Puzzle'
     import Home from '../components/Home'
     import PogodiInstrument from '../components/PogodiInstrument'
+    import PuzzleCategories from '../components/PuzzleCategories'
+import MusicButton from '../components/MusicButton'
+
+
 
 
 
 
     export default {
+       components: {MusicButton, },
+
         methods: {
           open(var1){
                 
                 if(var1===1){
                     this.$navigateTo(Memori);
                 }else if(var1==2) {
-                    this.$navigateTo(Puzzle);
+                    this.$navigateTo(PuzzleCategories);
                 }
                 else if(var1==3) {
                     this.$navigateTo(PogodiInstrument);

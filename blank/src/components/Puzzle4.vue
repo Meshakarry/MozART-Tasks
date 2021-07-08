@@ -5,7 +5,7 @@
 
             <AbsoluteLayout class="btn">
                 <Label  class="back"
-                    style="background-color: blue; height: 60; width: 60; border-radius: 50%; " />
+                    style="background-color: blue; height: 60; width: 60; border-radius: 50%; " @tap="open(var1=1)"/>
                 <Label class="back2"
                     style="background-color: #ffe5d0; height: 45; width: 45; border-radius: 50%; " />
                 <Label class="fas" textWrap="true">
@@ -97,6 +97,8 @@
     import { ImagePopupOptions } from 'nativescript-image-popup/classes';
     const { isIOS } = require('tns-core-modules/platform');
     const { TNSPlayer } = require('nativescript-audio');
+    import PuzzleCategories from '../components/PuzzleCategories'
+
 
     export default {
     name: "Home",
@@ -213,6 +215,12 @@
         this.dropArea3 = this.$refs.dropArea3.nativeView;
     },
     methods: {
+         open(var1){
+                
+                if(var1===1){
+                    this.$navigateTo(PuzzleCategories);
+                }
+         },
         onPan(args, ref, box) {
         // Down
         if (args.state === 1) {
