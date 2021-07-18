@@ -36,7 +36,7 @@
         <Button @tap="reset" class="PonovoPokreni"> Ponovo Pokreni</Button> 
 
         <!-- <Button @tap="reset"> Ponovo Pokreni</Button>  -->
-        <!-- <Label text="promjena samo za dinu jer je smotana pa moramo ovako"> </Label> -->
+     
 
 
 
@@ -163,10 +163,6 @@ import MusicButton from '../components/MusicButton'
  }
 
  .memoryList {
-     /* margin-left:8%; */
-    /* width:100%; */
-     /* height: 68%;
-     padding: 30px; */
      display: flex;
      flex-flow: row wrap;
      width:70%;
@@ -184,8 +180,7 @@ import MusicButton from '../components/MusicButton'
  }
  .memoryOkvir{
      height:67%;
-     /* display: flex; */
-     /* flex-flow: column nowrap; */
+  
  }
  .PonovoPokreni{
      width: 400px;
