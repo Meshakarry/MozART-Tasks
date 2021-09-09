@@ -25,13 +25,15 @@ export default {
                 
             };
         },
+        props:["audio"],
+        
        
         created(){
             this._player = new TNSPlayer();
 
             const playerOptions = {
             //   audioFile: "https://www.w3schools.com/html/horse.mp3",
-            audioFile: "~/audio/ast.mp3",
+            audioFile: this.audio,
             loop: true,
             autoplay: false,
             

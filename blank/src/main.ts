@@ -22,6 +22,7 @@ import AnalSlusanjeTrozvuka from './components/AnalSlusanjeTrozvuka.vue';
 import AnalSlusanjeTrozvuka2 from './components/AnalSlusanjeTrozvuka2.vue';
 import AnalSlusanjeTrozvuka3 from './components/AnalSlusanjeTrozvuka3.vue';
 import AnalSlusanjeTrozvuka4 from './components/AnalSlusanjeTrozvuka4.vue';
+import QuestionBoxTrozvuk from './components/QuestionBoxTrozvuk.vue'
 
 import PuzzleCategories from './components/PuzzleCategories.vue';
 import ButtonTrozvuk from './components/ButtonTrozvuk.vue'
